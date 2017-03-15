@@ -1,0 +1,14 @@
+{
+  "name": "smart-id-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.6.2",
+    "angular-resource": "1.6.2",
+    "angular-route": "1.6.2",
+    "angular-cookies": "1.6.2",
+    "angular-sanitize": "1.6.2",
+    "angular-i18n": "1.6.2",
+    "angular-messages": "1.6.2",
+    "underscore": "1.8.3"
+  }
+}

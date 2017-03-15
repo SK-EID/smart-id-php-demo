@@ -1,0 +1,25 @@
+{
+  "name": "sk-id-solutions/smart-id-php-demo",
+  "type": "project",
+  "description": "Smart-ID PHP Api client demo",
+  "homepage": "https://github.com/SK-EID/smart-id-php-demo",
+  "keywords": [
+    "smart-id",
+    "relying",
+    "party",
+    "api"
+  ],
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Eugene Serkin",
+      "homepage": "https://github.com/jeserkin"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "smart-id-php-client/smart-id-php-client": "dev-master",
+    "silex/silex": "2.0.4"
+  },
+  "minimum-stability": "dev"
+}
