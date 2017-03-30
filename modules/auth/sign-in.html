@@ -1,0 +1,31 @@
+<div class="LogInView">
+  <div class="loginWrapper">
+    <div class="logInMessage" ng-class="{'isError': $ctrl.invalid}">
+      <span ng-if="!$ctrl.invalid">Log in to Smart-ID portal</span>
+      <span ng-if="$ctrl.invalid">Login failed</span>
+    </div>
+    <div class="container logInContent">
+      <div class="LogInRow clearfix">
+        <div class="box">
+          <form class="logInColumn">
+            <div class="formHeader">
+            </div>
+            <div class="formContent activeContent hideMobile">
+              <div class="formRow">
+                <select class="countries" ng-model="$ctrl.country" ng-options="country.label for country in $ctrl.countries"></select>
+              </div>
+              <div class="formRow">
+                <input type="text" class="input" placeholder="Personal ID-code" ng-model="$ctrl.nationalIdentityNumber" />
+              </div>
+              <div class="formRow">
+                <button type="button" class="btn btnPrimary" ng-click="$ctrl.signIn()">
+                  <span>Enter portal</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

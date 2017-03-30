@@ -1,0 +1,3400 @@
+
+.react-datepicker__month-read-view--down-arrow,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,.react-datepicker__tether-element-attached-top .react-datepicker__triangle,.react-datepicker__year-read-view--down-arrow {
+    margin-left: -8px;
+    position: absolute
+}
+
+.react-datepicker__month-read-view--down-arrow,.react-datepicker__month-read-view--down-arrow:before,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle:before,.react-datepicker__tether-element-attached-top .react-datepicker__triangle,.react-datepicker__tether-element-attached-top .react-datepicker__triangle:before,.react-datepicker__year-read-view--down-arrow,.react-datepicker__year-read-view--down-arrow:before {
+    box-sizing: content-box;
+    position: absolute;
+    border: 8px solid transparent;
+    height: 0;
+    width: 1px
+}
+
+.react-datepicker__month-read-view--down-arrow:before,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle:before,.react-datepicker__tether-element-attached-top .react-datepicker__triangle:before,.react-datepicker__year-read-view--down-arrow:before {
+    content: "";
+    z-index: -1;
+    border-width: 8px;
+    left: -8px;
+    border-bottom-color: #aeaeae
+}
+
+.react-datepicker__tether-element-attached-top .react-datepicker__triangle {
+    top: 0;
+    margin-top: -8px
+}
+
+.react-datepicker__tether-element-attached-top .react-datepicker__triangle,.react-datepicker__tether-element-attached-top .react-datepicker__triangle:before {
+    border-top: none;
+    border-bottom-color: #f0f0f0
+}
+
+.react-datepicker__tether-element-attached-top .react-datepicker__triangle:before {
+    top: -1px;
+    border-bottom-color: #aeaeae
+}
+
+.react-datepicker__month-read-view--down-arrow,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,.react-datepicker__year-read-view--down-arrow {
+    bottom: 0;
+    margin-bottom: -8px
+}
+
+.react-datepicker__month-read-view--down-arrow,.react-datepicker__month-read-view--down-arrow:before,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle:before,.react-datepicker__year-read-view--down-arrow,.react-datepicker__year-read-view--down-arrow:before {
+    border-bottom: none;
+    border-top-color: #fff
+}
+
+.react-datepicker__month-read-view--down-arrow:before,.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle:before,.react-datepicker__year-read-view--down-arrow:before {
+    bottom: -1px;
+    border-top-color: #aeaeae
+}
+
+.react-datepicker {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: .8rem;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #aeaeae;
+    border-radius: .3rem;
+    display: inline-block;
+    position: relative
+}
+
+.react-datepicker__triangle {
+    position: absolute;
+    left: 50px
+}
+
+.react-datepicker__tether-element-attached-bottom.react-datepicker__tether-element {
+    margin-top: -20px
+}
+
+.react-datepicker__header {
+    text-align: center;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #aeaeae;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+    padding-top: 8px;
+    position: relative
+}
+
+.react-datepicker__month-dropdown-container--scroll,.react-datepicker__month-dropdown-container--select,.react-datepicker__year-dropdown-container--scroll,.react-datepicker__year-dropdown-container--select {
+    display: inline-block;
+    margin: 0 2px
+}
+
+.react-datepicker__current-month {
+    margin-top: 0;
+    color: #000;
+    font-weight: 700;
+    font-size: .944rem
+}
+
+.react-datepicker__navigation {
+    line-height: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    width: 0;
+    border: .45rem solid transparent;
+    z-index: 1
+}
+
+.react-datepicker__navigation--previous {
+    left: 10px;
+    border-right-color: #ccc
+}
+
+.react-datepicker__navigation--previous:hover {
+    border-right-color: #b3b3b3
+}
+
+.react-datepicker__navigation--next {
+    right: 10px;
+    border-left-color: #ccc
+}
+
+.react-datepicker__navigation--next:hover {
+    border-left-color: #b3b3b3
+}
+
+.react-datepicker__navigation--years {
+    position: relative;
+    top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.react-datepicker__navigation--years-previous {
+    top: 4px;
+    border-top-color: #ccc
+}
+
+.react-datepicker__navigation--years-previous:hover {
+    border-top-color: #b3b3b3
+}
+
+.react-datepicker__navigation--years-upcoming {
+    top: -4px;
+    border-bottom-color: #ccc
+}
+
+.react-datepicker__navigation--years-upcoming:hover {
+    border-bottom-color: #b3b3b3
+}
+
+.react-datepicker__month-container {
+    display: inline;
+    float: left
+}
+
+.react-datepicker__month {
+    margin: .4rem;
+    text-align: center
+}
+
+.react-datepicker__week-number {
+    color: #ccc
+}
+
+.react-datepicker__day,.react-datepicker__day-name,.react-datepicker__week-number {
+    display: inline-block;
+    width: 1.7rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: .166rem
+}
+
+.react-datepicker__day,.react-datepicker__day-name {
+    color: #000
+}
+
+.react-datepicker__day {
+    cursor: pointer
+}
+
+.react-datepicker__day:hover {
+    border-radius: .3rem;
+    background-color: #f0f0f0
+}
+
+.react-datepicker__day--today {
+    font-weight: 700
+}
+
+.react-datepicker__day--highlighted {
+    border-radius: .3rem;
+    background-color: #3dcc4a;
+    color: #fff
+}
+
+.react-datepicker__day--highlighted:hover {
+    background-color: #32be3f
+}
+
+.react-datepicker__day--in-range,.react-datepicker__day--in-selecting-range,.react-datepicker__day--selected {
+    border-radius: .3rem;
+    background-color: #216ba5;
+    color: #fff
+}
+
+.react-datepicker__day--in-range:hover,.react-datepicker__day--in-selecting-range:hover,.react-datepicker__day--selected:hover {
+    background-color: #1d5d90
+}
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+    background-color: rgba(33,107,165,.5)
+}
+
+.react-datepicker__month--selecting-range .react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {
+    background-color: #f0f0f0;
+    color: #000
+}
+
+.react-datepicker__day--disabled {
+    cursor: default;
+    color: #ccc
+}
+
+.react-datepicker__day--disabled:hover {
+    background-color: transparent
+}
+
+.react-datepicker__input-container {
+    position: relative;
+    display: inline-block
+}
+
+.react-datepicker__month-read-view,.react-datepicker__year-read-view {
+    border: 1px solid transparent;
+    border-radius: .3rem
+}
+
+.react-datepicker__month-read-view:hover,.react-datepicker__year-read-view:hover {
+    cursor: pointer
+}
+
+.react-datepicker__month-read-view:hover .react-datepicker__month-read-view--down-arrow,.react-datepicker__month-read-view:hover .react-datepicker__year-read-view--down-arrow,.react-datepicker__year-read-view:hover .react-datepicker__month-read-view--down-arrow,.react-datepicker__year-read-view:hover .react-datepicker__year-read-view--down-arrow {
+    border-top-color: #b3b3b3
+}
+
+.react-datepicker__month-read-view--down-arrow,.react-datepicker__year-read-view--down-arrow {
+    border-top-color: #ccc;
+    float: right;
+    margin-left: 20px;
+    top: 8px;
+    position: relative;
+    border-width: .45rem
+}
+
+.react-datepicker__month-dropdown,.react-datepicker__year-dropdown {
+    background-color: #f0f0f0;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 30px;
+    text-align: center;
+    border-radius: .3rem;
+    border: 1px solid #aeaeae
+}
+
+.react-datepicker__month-dropdown:hover,.react-datepicker__year-dropdown:hover {
+    cursor: pointer
+}
+
+.react-datepicker__month-dropdown--scrollable,.react-datepicker__year-dropdown--scrollable {
+    height: 150px;
+    overflow-y: scroll
+}
+
+.react-datepicker__month-option,.react-datepicker__year-option {
+    line-height: 20px;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.react-datepicker__month-option:first-of-type,.react-datepicker__year-option:first-of-type {
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem
+}
+
+.react-datepicker__month-option:last-of-type,.react-datepicker__year-option:last-of-type {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem
+}
+
+.react-datepicker__month-option:hover,.react-datepicker__year-option:hover {
+    background-color: #ccc
+}
+
+.react-datepicker__month-option:hover .react-datepicker__navigation--years-upcoming,.react-datepicker__year-option:hover .react-datepicker__navigation--years-upcoming {
+    border-bottom-color: #b3b3b3
+}
+
+.react-datepicker__month-option:hover .react-datepicker__navigation--years-previous,.react-datepicker__year-option:hover .react-datepicker__navigation--years-previous {
+    border-top-color: #b3b3b3
+}
+
+.react-datepicker__month-option--selected,.react-datepicker__year-option--selected {
+    position: absolute;
+    left: 15px
+}
+
+.react-datepicker__close-icon {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: middle
+}
+
+.react-datepicker__close-icon:after {
+    background-color: #216ba5;
+    border-radius: 50%;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    content: "\D7";
+    cursor: pointer;
+    font-size: 12px;
+    height: 16px;
+    width: 16px;
+    line-height: 1;
+    margin: -8px auto 0;
+    padding: 2px;
+    position: absolute;
+    right: 7px;
+    text-align: center;
+    top: 50%
+}
+
+.react-datepicker__today-button {
+    background: #f0f0f0;
+    border-top: 1px solid #aeaeae;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 700;
+    padding: 5px 0;
+    clear: left
+}
+
+.react-datepicker__tether-element {
+    z-index: 2147483647
+}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html {
+                                                                                 font-family: sans-serif;
+                                                                                 line-height: 1.15;
+                                                                                 -ms-text-size-adjust: 100%;
+                                                                                 -webkit-text-size-adjust: 100%
+                                                                             }
+
+body {
+    margin: 0
+}
+
+article,aside,footer,header,nav,section {
+    display: block
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+figcaption,figure,main {
+    display: block
+}
+
+figure {
+    margin: 1em 40px
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible
+}
+
+pre {
+    font-family: monospace,monospace;
+    font-size: 1em
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+a:active,a:hover {
+    outline-width: 0
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted
+}
+
+b,strong {
+    font-weight: inherit;
+    font-weight: bolder
+}
+
+code,kbd,samp {
+    font-family: monospace,monospace;
+    font-size: 1em
+}
+
+dfn {
+    font-style: italic
+}
+
+mark {
+    background-color: #ff0;
+    color: #000
+}
+
+small {
+    font-size: 80%
+}
+
+sub,sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+audio,video {
+    display: inline-block
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+img {
+    border-style: none
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+button,input,optgroup,select,textarea {
+    font-family: sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0
+}
+
+button,input {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}[type=reset],[type=submit],button,html [type=button] {
+     -webkit-appearance: button
+ }[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner {
+      border-style: none;
+      padding: 0
+  }[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring {
+       outline: 1px dotted ButtonText
+   }
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal
+}
+
+progress {
+    display: inline-block;
+    vertical-align: baseline
+}
+
+textarea {
+    overflow: auto
+}[type=checkbox],[type=radio] {
+     box-sizing: border-box;
+     padding: 0
+ }[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
+      height: auto
+  }[type=search] {
+       -webkit-appearance: textfield;
+       outline-offset: -2px
+   }[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration {
+        -webkit-appearance: none
+    }
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit
+}
+
+details,menu {
+    display: block
+}
+
+summary {
+    display: list-item
+}
+
+canvas {
+    display: inline-block
+}[hidden],template {
+     display: none
+ }
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background-color: #eeede9;
+    min-width: 300px;
+    -webkit-text-size-adjust: 100%
+}
+
+.container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.content {
+    padding-top: 110px
+}
+
+.logInContent {
+    padding-top: 0
+}
+
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both
+}
+
+#root {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+body {
+    color: #333;
+    font: 16px/1.4 Roboto,sans-serif
+}
+
+button,input {
+    font-family: inherit
+}
+
+.h3,h3 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333
+}
+
+.h4,h4 {
+    font-size: 16px
+}
+
+.h4,.h5,h4,h5 {
+    font-weight: 700;
+    color: #333
+}
+
+.h5,h5 {
+    font-size: 14px;
+    margin: 0
+}
+
+button {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: none;
+    border: none
+}
+
+.btn {
+    font-size: 14px;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid transparent;
+    width: 188px
+}
+
+.btn.btnDropdownOption,.btn.btnPrimary {
+    font-weight: 700
+}
+
+.btn.btnSecondary {
+    border-color: #ccc;
+    color: #999;
+    background: transparent
+}
+
+.btn.btnSecondary:active,.btn.btnSecondary:hover {
+    border-color: #999;
+    color: #666
+}
+
+.btn.btnSecondary:active {
+    background: #eee
+}
+
+.btn.btnPrimary {
+    border-color: #4daea9;
+    background: #4daea9;
+    color: #fff
+}
+
+.btn.btnPrimary:hover {
+    border-color: #409a95;
+    background: #409a95
+}
+
+.btn.btnPrimary:active {
+    border-color: #287975;
+    background: #287975
+}
+
+.btn.btnLink {
+    width: auto;
+    text-decoration: underline;
+    color: #333
+}
+
+.btn.btnLink:hover {
+    text-decoration: none
+}
+
+.btn.btnLanguage {
+    width: 100%;
+    text-align: center;
+    background-color: #1b3b61;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 0
+}
+
+.btn.btnDropdownOption {
+    text-align: left;
+    font-weight: 400;
+    color: #1b3a62;
+    white-space: normal
+}
+
+.btn.btnDropdownOptionSelected {
+    border-color: #d1d7df;
+    -webkit-transition: border-radius .3s,border-color .3s;
+    transition: border-radius .3s,border-color .3s
+}
+
+.btn:focus {
+    outline: 0
+}
+
+input {
+    display: block;
+    padding: 3px 20px;
+    font-size: 16px;
+    line-height: normal;
+    height: 40px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #d1d7df;
+    -webkit-transition: border-color .3s;
+    transition: border-color .3s;
+    outline: none;
+    border-radius: 20px;
+    color: #1b3a62
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(27,58,98,.4);
+    font-size: 14px
+}
+
+input::-moz-placeholder {
+    color: rgba(27,58,98,.4);
+    font-size: 14px
+}
+
+input:-ms-input-placeholder {
+    color: rgba(27,58,98,.4);
+    font-size: 14px
+}
+
+input::placeholder {
+    color: rgba(27,58,98,.4);
+    font-size: 14px
+}
+
+input:focus {
+    border-color: #1b3a62
+}
+
+.inputRow {
+    margin: 0 -6px;
+    text-align: left
+}
+
+.inputRow .btn,.inputRow .input {
+    margin: 6px;
+    width: 130px
+}
+
+.formContent .errorInput {
+    border: 1px solid #ec0000
+}
+
+.panel {
+    border-radius: 20px;
+    background: #f9f8f6;
+    box-shadow: 0 7px 20px 0 rgba(0,0,0,.03);
+    padding: 30px
+}
+
+.panel h3 {
+    margin: 7px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px
+}
+
+.panel.panelNarrow {
+    max-width: 780px;
+    min-height: 200px;
+    margin: auto auto 30px;
+    padding: 30px 8% 50px;
+    text-align: center
+}
+
+.Modal {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    color: #333;
+    padding: 25px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.3)
+}
+
+.Modal .btnClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 1px;
+    height: 12px;
+    width: 12px;
+    background: none
+}
+
+.Modal .btnClose .closeIcon {
+    display: block;
+    height: 8px
+}
+
+.ModalOverlay {
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsla(0,0%,60%,.75)
+}
+
+.Modal:focus {
+    outline: 0
+}
+
+.react-datepicker {
+    font-family: inherit
+}
+
+.SidIcon g {
+    fill: #fff
+}
+
+.HeaderMenu {
+    height: 100%;
+    margin-left: auto
+}
+
+@media (min-width:600px) {
+    .HeaderMenu {
+        display: none
+    }
+}
+
+.HeaderMenu>.options {
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,-webkit-transform .3s;
+    transition: transform .3s,opacity .3s;
+    transition: transform .3s,opacity .3s,-webkit-transform .3s;
+    will-change: transform,opacity;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%
+}
+
+.HeaderMenu>.options .btn {
+    padding: 10px 20px
+}
+
+.HeaderMenu>.options .menuItem {
+    text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.HeaderMenu>.options .menuItem .menuImage {
+    width: 16px;
+    margin: 0 15px 0 6px
+}
+
+.HeaderMenu>.options .menuItem path {
+    fill: #fff
+}
+
+.HeaderMenu>.options .active.menuItem {
+    background-color: #122f55;
+    color: #4daea9
+}
+
+.HeaderMenu>.options .active.menuItem path {
+    fill: #4daea9
+}
+
+.HeaderMenu.isOpen>.options {
+    pointer-events: auto;
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none
+}
+
+.HeaderMenu.isOpen>.languageArrow {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+
+.HeaderMenu .btn {
+    display: block;
+    background-color: #1b3b61;
+    outline: none;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    border-radius: 0;
+    margin: 0
+}
+
+.HeaderMenu .dropdown {
+    width: 100%
+}
+
+.HeaderMenu .menu {
+    padding: 0;
+    width: 24px;
+    height: 18px;
+    position: relative;
+    -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    margin-top: 21px
+}
+
+.HeaderMenu .menu,.HeaderMenu .menu span {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+}
+
+.HeaderMenu .menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transition: .25s ease-in-out;
+    transition: .25s ease-in-out
+}
+
+.HeaderMenu .menu span:first-child {
+    top: 0
+}
+
+.HeaderMenu .menu.open span:first-child,.HeaderMenu .menu.open span:nth-child(4),.HeaderMenu .menu span:nth-child(2),.HeaderMenu .menu span:nth-child(3) {
+    top: 6px
+}
+
+.HeaderMenu .menu span:nth-child(4) {
+    top: 12px
+}
+
+.HeaderMenu.isOpen .menu span:first-child,.HeaderMenu.isOpen .menu span:nth-child(4) {
+    width: 0;
+    left: 50%
+}
+
+.HeaderMenu.isOpen .menu span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.HeaderMenu.isOpen .menu span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.Header {
+    top: 0;
+    background-color: #1b3b61;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 90
+}
+
+.Header .container {
+    height: 100%
+}
+
+.Header .logo {
+    position: absolute;
+    left: 24px;
+    height: 30px;
+    margin-top: 15px;
+    width: 24px
+}
+
+.Header .loggedOutLogo {
+    width: 121px;
+    left: 15px
+}
+
+.Header .dropdown {
+    min-width: 98px
+}
+
+.Header .dropdown.language {
+    margin-top: 14px;
+    float: right
+}
+
+.Header .dropdown .btn {
+    background-color: #1b3b61;
+    outline: none;
+    color: #fff;
+    width: 100%
+}
+
+.Header .headerContent {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 24px
+}
+
+.Header .headerContent .name {
+    font-size: 14px;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    position: relative;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 15px;
+    padding-right: 48px;
+    line-height: 40px
+}
+
+@media (min-width:600px) {
+    .Header .headerContent .name:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: #fff
+    }
+}
+
+.Header .headerContent .nav {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+}
+
+@media (max-width:599px) {
+    .Header .headerContent .nav {
+        display: none
+    }
+}
+
+.Header .headerContent .nav .navItem {
+    text-decoration: none;
+    color: #fff;
+    background: transparent;
+    white-space: nowrap;
+    padding: 0;
+    margin-right: 20px
+}
+
+.Header .headerContent .nav .active span {
+    border-bottom: 2px solid #fff
+}
+
+.Header .headerContent .nav .logOut {
+    margin-left: auto
+}
+
+/* Quick css fix */
+sid-footer {
+    margin-top: auto;
+    position: relative;
+}
+/* Quick css fix */
+
+.Footer {
+    padding: 50px 0;
+    margin-top: auto;
+    background-color: #1b3b61;
+    position: relative
+}
+
+.Footer .contentWrapper {
+    color: #fff;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-size: 16px
+}
+
+.Footer .footerElement {
+    margin-left: 40px;
+    padding-right: 20px;
+    display: inline-block;
+    vertical-align: top
+}
+
+.Footer .headerText,.Footer .minorHeader {
+    color: #fff;
+    margin-top: 0
+}
+
+.Footer .headerText {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700
+}
+
+.Footer .version {
+    color: hsla(0,0%,100%,.2);
+    margin: 0 auto
+}
+
+.Footer .contact {
+    text-align: left;
+    margin-right: 30px
+}
+
+.Footer .contact .list {
+    list-style: none;
+    padding-left: 0
+}
+
+.Footer .contact .list .link {
+    color: #fff;
+    text-decoration: none
+}
+
+.Footer .contact .contactHeader:before {
+    content: "";
+    width: 24px;
+    float: left;
+    margin-left: -40px;
+    margin-top: 9px;
+    height: 4px;
+    background-color: #00b5ac
+}
+
+.Footer .language {
+    margin-bottom: 20px;
+    text-align: left
+}
+
+.Footer .language .btn {
+    width: auto;
+    display: block;
+    font-size: 16px;
+    padding-left: 0
+}
+
+.Footer .language .arrow {
+    color: #d2d2d2;
+    display: inline-block;
+    height: 5px;
+    width: 15px;
+    vertical-align: middle;
+    margin: 0 3px 3px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg)
+}
+
+.Footer .language .arrow .downArrow {
+    fill: #fff
+}
+
+.Version {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    color: #111;
+    pointer-events: none
+}
+
+.wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+.PhoneIcon {
+    height: 56px
+}
+
+.PhoneIcon path {
+    fill: #4daea9
+}
+
+.TabletIcon {
+    height: 70px
+}
+
+.TabletIcon path {
+    fill: #4daea9
+}
+
+.Device {
+    background-color: #f9f8f6;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: 0 7px 20px 0 rgba(0,0,0,.03);
+    position: relative;
+    min-height: 120px;
+    font-size: 12px;
+    line-height: 18px
+}
+
+.Device .title {
+    margin: 0
+}
+
+.Device .deviceInfo {
+    border: none;
+    color: #999;
+    min-height: 120px;
+    pointer-events: none
+}
+
+@media (min-width:900px) {
+    .Device .deviceInfo:hover {
+        cursor: default
+    }
+}
+
+.Device .deviceIcon {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    vertical-align: top
+}
+
+@media (min-width:900px) {
+    .Device .deviceIcon {
+        width: 20%
+    }
+}
+
+.Device .deviceIcon .accountStatus {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center
+}
+
+@media (min-width:900px) {
+    .Device .deviceIcon .accountStatus {
+        display: block
+    }
+}
+
+.Device .deviceIcon .icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    height: 55px
+}
+
+@media (min-width:900px) {
+    .Device .deviceIcon .icon {
+        -webkit-transform: translate(-50%,-70%);
+        transform: translate(-50%,-70%)
+    }
+}
+
+.Device .deviceIcon .icon path {
+    fill: #4daea9
+}
+
+.Device .deviceIcon .TabletIcon {
+    height: 66px
+}
+
+.Device .deviceIcon .androidPhone {
+    width: 10px
+}
+
+.Device .deviceIcon .androidTablet,.Device .deviceIcon .appleTablet {
+    width: 16px
+}
+
+@media (min-width:600px) {
+    .Device .deviceIcon .androidTablet,.Device .deviceIcon .appleTablet {
+        top: 48%
+    }
+}
+
+.Device .deviceAbout {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 80%
+}
+
+.Device .deviceAbout .deviceName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    font-size: 20px;
+    line-height: 22px;
+    color: #1b3b61;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    width: 80%
+}
+
+.Device .deviceAbout .infoWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 10px 0 0
+}
+
+.Device .deviceAbout .infoWrapper .dates {
+    display: none
+}
+
+@media (min-width:600px) {
+    .Device .deviceAbout .infoWrapper .dates {
+        display: block
+    }
+}
+
+.Device .deviceAbout .infoWrapper .loader {
+    padding-top: 10px
+}
+
+.Device .deviceAbout .infoWrapper .aboutElement {
+    width: 100%;
+    margin-bottom: 10px
+}
+
+@media (min-width:600px) {
+    .Device .deviceAbout .infoWrapper .aboutElement {
+        width: 50%
+    }
+}
+
+@media (min-width:900px) {
+    .Device .deviceAbout .infoWrapper .aboutElement {
+        width: 30%
+    }
+}
+
+.Device .deviceAbout .infoWrapper .keys {
+    display: none;
+    position: relative
+}
+
+.Device .deviceAbout .infoWrapper .keys .bold {
+    font-weight: 700;
+    color: #000;
+    margin: 0
+}
+
+.Device .deviceAbout .infoWrapper .keys .lockIcon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    margin-left: -6px
+}
+
+.Device .deviceAbout .infoWrapper .keys .lockIcon path {
+    fill: #ec0000
+}
+
+@media (min-width:600px) {
+    .Device .deviceAbout .infoWrapper .keys {
+        width: 100%
+    }
+}
+
+@media (min-width:900px) {
+    .Device .deviceAbout .infoWrapper .keys {
+        width: 40%;
+        display: block
+    }
+}
+
+.Device .deviceAbout .infoWrapper .keys.locked {
+    padding-left: 30px
+}
+
+.Device .deviceAbout .infoWrapper .keys .pin.locked {
+    color: #ec0000
+}
+
+.Device .deviceAbout .infoWrapper .accountStatus,.Device .deviceAbout .infoWrapper .isOpen {
+    display: block
+}
+
+@media (min-width:900px) {
+    .Device .deviceAbout .infoWrapper .accountStatus {
+        display: none
+    }
+}
+
+.Device .deviceInfoMenu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.Device .deviceInfoMenu:hover {
+    cursor: pointer
+}
+
+.Device .deviceInfoMenu:before {
+    white-space: pre-line;
+    width: 0;
+    line-height: 5px;
+    display: block;
+    font-size: 8px;
+    position: absolute;
+    right: 18px;
+    top: 52px;
+    color: #999;
+    content: "\25CF   \25CF   \25CF"
+}
+
+@media (min-width:900px) {
+    .Device .deviceInfoMenu {
+        display: none
+    }
+}
+
+.Device .downloadIcon path {
+    fill: #4daea9
+}
+
+.Device .buttons {
+    display: none;
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid rgba(23,46,88,.15);
+    pointer-events: all;
+    position: relative;
+    z-index: 10
+}
+
+.Device .buttons .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-decoration: none
+}
+
+@media (min-width:600px) {
+    .Device .buttons .btn {
+        width: 48%
+    }
+}
+
+@media (min-width:900px) {
+    .Device .buttons .btn {
+        width: auto
+    }
+}
+
+.Device .isOpen {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+@media (min-width:900px) {
+    .Device .isOpen.mobileButtons {
+        display: none
+    }
+}
+
+.Device .showOptions {
+    display: none;
+    margin-bottom: 14px;
+    color: #4daea9;
+    pointer-events: all
+}
+
+.Device .showOptions:hover {
+    cursor: pointer
+}
+
+.Device .showOptions .arrow {
+    display: inline-block;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s,-webkit-transform .3s;
+    height: 5px;
+    width: 10px;
+    vertical-align: middle;
+    margin: 7px 3px 0;
+    float: right
+}
+
+.Device .showOptions .arrow .downArrow {
+    fill: #4daea9
+}
+
+.Device .showOptions.isOpen .arrow {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+@media (min-width:900px) {
+    .Device .showOptions {
+        display: inline-block
+    }
+}
+
+.Device .desktopButtons {
+    display: none;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    border: none;
+    padding: 0 20px 0 0
+}
+
+@media (min-width:900px) {
+    .Device .desktopButtons.isOpen {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+}
+
+.Device.isDisabled .deviceIcon .icon path {
+    fill: #d2d2d2
+}
+
+.Device.isLocked .deviceIcon .icon path {
+    fill: #ec0000
+}
+
+.Device.isWarning .deviceIcon .icon path {
+    fill: #f6d325
+}
+
+.DeleteModal .text {
+    padding: 10px 0 30px;
+    font-size: 18px
+}
+
+.HomeView {
+    margin-bottom: 40px
+}
+
+.HomeView .noActiveAccounts {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #999
+}
+
+.HomeView .noActiveAccounts .title {
+    color: #1b3b61;
+    font-size: 18px;
+    font-weight: 700
+}
+
+.HomeView .actions {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center
+}
+
+.HomeView .actions .btn {
+    width: auto
+}
+
+.loader {
+    width: 100%;
+    display: inline-block;
+    text-align: center
+}
+
+.dropdown {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    width: 100%
+}
+
+.dropdown .options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,-webkit-transform .3s;
+    transition: transform .3s,opacity .3s;
+    transition: transform .3s,opacity .3s,-webkit-transform .3s;
+    will-change: transform,opacity;
+    background: #fff;
+    border: 1px solid #1b3a62;
+    border-top: 0;
+    border-radius: 0 0 20px 20px
+}
+
+.dropdown .options .btn {
+    background: none
+}
+
+.dropdown .languageArrow {
+    color: #d2d2d2;
+    display: inline-block;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s,-webkit-transform .3s;
+    height: 5px;
+    width: 10px;
+    vertical-align: middle;
+    margin: 7px 3px 0;
+    float: right
+}
+
+.dropdown .languageArrow .downArrow {
+    fill: #1b3a62
+}
+
+.dropdown.isOpen .btnDropdownOptionSelected {
+    border-radius: 20px 20px 0 0;
+    border-color: #1b3a62;
+    border-bottom-color: transparent
+}
+
+.dropdown.isOpen .options {
+    pointer-events: auto;
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none
+}
+
+.dropdown.isOpen .languageArrow {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.LogInRow {
+    min-height: 168px
+}
+
+.LogInRow .SidIcon g {
+    fill: #00afaa
+}
+
+.LogInRow .box {
+    border-top: 1px solid #e5e5e5;
+    height: 33.33%
+}
+
+@media (min-width:500px) {
+    .LogInRow .box {
+        border-top: none
+    }
+}
+
+.LogInRow .box .logo {
+    margin: 20px 0;
+    height: 20px
+}
+
+@media (min-width:500px) {
+    .LogInRow .box .logo {
+        display: none
+    }
+}
+
+.LogInRow .box .SidIcon {
+    height: 30px;
+    margin: 14px 0
+}
+
+.LogInRow .logInColumn {
+    margin: 2px 0;
+    padding: 0;
+    box-shadow: none;
+    height: 100%
+}
+
+@media (min-width:500px) {
+    .LogInRow .logInColumn {
+        margin: 0;
+        border-radius: 0 0 20px 20px
+    }
+}
+
+.LogInRow .logInColumn .formHeader {
+    font-size: 0
+}
+
+.LogInRow .logInColumn .formContent {
+    margin-top: auto;
+    padding: 0 30px 25px;
+    display: none
+}
+
+.LogInRow .logInColumn .formContent .formRow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    margin: 15px 0
+}
+
+.LogInRow .logInColumn .activeContent {
+    display: block
+}
+
+@media (min-width:500px) {
+    .LogInRow .logInColumn .activeContent {
+        padding: 50px 70px
+    }
+}
+
+.LogInRow .logInColumn .hideMobile {
+    display: none
+}
+
+@media (min-width:500px) {
+    .LogInRow .logInColumn .hideMobile {
+        display: block
+    }
+}
+
+.LogInRow .tabRow {
+    display: none;
+    height: 40px
+}
+
+@media (min-width:500px) {
+    .LogInRow .tabRow {
+        display: block
+    }
+
+    .LogInRow .tabRow .tab {
+        display: inline-block;
+        width: 33.333333%;
+        border: 1px solid rgba(0,0,0,.1);
+        height: 100%
+    }
+
+    .LogInRow .tabRow .logo {
+        margin: 12px 0;
+        height: 16px
+    }
+
+    .LogInRow .tabRow .SidIcon {
+        height: 26px;
+        margin: 7px 0
+    }
+
+    .LogInRow .tabRow :first-child,.LogInRow .tabRow :nth-child(3) {
+        border-right: none;
+        border-left: none
+    }
+
+    .LogInRow .tabRow .tabActive {
+        background-color: #fff;
+        border-bottom: 1px solid #fff
+    }
+}
+
+.LogInRow .btn,.LogInRow .input {
+    width: 100%
+}
+
+.LogInRow .mobileIdCountryCode {
+    width: 35%
+}
+
+.LogInRow .mobileIdCountryCode .btnDropdownOptionSelected {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 10px
+}
+
+@media (max-width:370px) {
+    .LogInRow .mobileIdCountryCode .btnDropdownOption {
+        padding-left: 10px
+    }
+}
+
+.LogInRow .mobileIdPhone {
+    border-radius: 0 20px 20px 0;
+    width: calc(65% - 1px);
+    margin-left: -1px
+}
+
+.LogInRow .mobileIdPhone:focus {
+    z-index: 2
+}
+
+.LogInView {
+    text-align: center;
+    margin-bottom: 50px
+}
+
+.LogInView .logInMessage {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b3b61;
+    padding: 25px 20px
+}
+
+.LogInView .isError {
+    color: #ff560a
+}
+
+.LogInView .verificationCode {
+    color: #1b3b61;
+    font-size: 60px;
+    font-weight: 700;
+    padding: 0 0 40px;
+    line-height: 40px
+}
+
+.LogInView .loader {
+    width: 30px
+}
+
+/* loader */
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+
+.loader {
+    margin: 10px auto;
+    font-size: 3px;
+    position: relative;
+    text-indent: -9999em;
+    /*border-top: 1.1em solid rgb(0, 175, 170);*/
+    border-right: 1.1em solid rgb(0, 175, 170);
+    border-bottom: 1.1em solid rgb(0, 175, 170);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/* loader */
+
+.LogInView .message {
+    color: #000;
+    font-size: 12px;
+    line-height: 20px;
+    padding-bottom: 20px
+}
+
+.LogInView .logInContent {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0
+}
+
+.LogInView .loader {
+    display: inline-block;
+    padding-bottom: 20px;
+    text-align: center
+}
+
+.LogInView .loginWrapper {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 7px 20px 0 rgba(0,0,0,.03)
+}
+
+.LogInView .controlCode {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000
+}
+
+.LogInView .verificationWrapper {
+    padding: 35px;
+    min-height: 250px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.react-tel-input {
+    position: relative;
+    width: 200px
+}
+
+.react-tel-input .ad {
+    background-position: -16px 0
+}
+
+.react-tel-input .ae {
+    background-position: -32px 0
+}
+
+.react-tel-input .af {
+    background-position: -48px 0
+}
+
+.react-tel-input .ag {
+    background-position: -64px 0
+}
+
+.react-tel-input .ai {
+    background-position: -80px 0
+}
+
+.react-tel-input .al {
+    background-position: -96px 0
+}
+
+.react-tel-input .am {
+    background-position: -112px 0
+}
+
+.react-tel-input .ao {
+    background-position: -128px 0
+}
+
+.react-tel-input .ar {
+    background-position: -144px 0
+}
+
+.react-tel-input .as {
+    background-position: -160px 0
+}
+
+.react-tel-input .at {
+    background-position: -176px 0
+}
+
+.react-tel-input .au {
+    background-position: -192px 0
+}
+
+.react-tel-input .aw {
+    background-position: -208px 0
+}
+
+.react-tel-input .az {
+    background-position: -224px 0
+}
+
+.react-tel-input .ba {
+    background-position: -240px 0
+}
+
+.react-tel-input .bb {
+    background-position: 0 -11px
+}
+
+.react-tel-input .bd {
+    background-position: -16px -11px
+}
+
+.react-tel-input .be {
+    background-position: -32px -11px
+}
+
+.react-tel-input .bf {
+    background-position: -48px -11px
+}
+
+.react-tel-input .bg {
+    background-position: -64px -11px
+}
+
+.react-tel-input .bh {
+    background-position: -80px -11px
+}
+
+.react-tel-input .bi {
+    background-position: -96px -11px
+}
+
+.react-tel-input .bj {
+    background-position: -112px -11px
+}
+
+.react-tel-input .bm {
+    background-position: -128px -11px
+}
+
+.react-tel-input .bn {
+    background-position: -144px -11px
+}
+
+.react-tel-input .bo {
+    background-position: -160px -11px
+}
+
+.react-tel-input .br {
+    background-position: -176px -11px
+}
+
+.react-tel-input .bs {
+    background-position: -192px -11px
+}
+
+.react-tel-input .bt {
+    background-position: -208px -11px
+}
+
+.react-tel-input .bw {
+    background-position: -224px -11px
+}
+
+.react-tel-input .by {
+    background-position: -240px -11px
+}
+
+.react-tel-input .bz {
+    background-position: 0 -22px
+}
+
+.react-tel-input .ca {
+    background-position: -16px -22px
+}
+
+.react-tel-input .cd {
+    background-position: -32px -22px
+}
+
+.react-tel-input .cf {
+    background-position: -48px -22px
+}
+
+.react-tel-input .cg {
+    background-position: -64px -22px
+}
+
+.react-tel-input .ch {
+    background-position: -80px -22px
+}
+
+.react-tel-input .ci {
+    background-position: -96px -22px
+}
+
+.react-tel-input .ck {
+    background-position: -112px -22px
+}
+
+.react-tel-input .cl {
+    background-position: -128px -22px
+}
+
+.react-tel-input .cm {
+    background-position: -144px -22px
+}
+
+.react-tel-input .cn {
+    background-position: -160px -22px
+}
+
+.react-tel-input .co {
+    background-position: -176px -22px
+}
+
+.react-tel-input .cr {
+    background-position: -192px -22px
+}
+
+.react-tel-input .cu {
+    background-position: -208px -22px
+}
+
+.react-tel-input .cv {
+    background-position: -224px -22px
+}
+
+.react-tel-input .cw {
+    background-position: -240px -22px
+}
+
+.react-tel-input .cy {
+    background-position: 0 -33px
+}
+
+.react-tel-input .cz {
+    background-position: -16px -33px
+}
+
+.react-tel-input .de {
+    background-position: -32px -33px
+}
+
+.react-tel-input .dj {
+    background-position: -48px -33px
+}
+
+.react-tel-input .dk {
+    background-position: -64px -33px
+}
+
+.react-tel-input .dm {
+    background-position: -80px -33px
+}
+
+.react-tel-input .do {
+    background-position: -96px -33px
+}
+
+.react-tel-input .dz {
+    background-position: -112px -33px
+}
+
+.react-tel-input .ec {
+    background-position: -128px -33px
+}
+
+.react-tel-input .ee {
+    background-position: -144px -33px
+}
+
+.react-tel-input .eg {
+    background-position: -160px -33px
+}
+
+.react-tel-input .er {
+    background-position: -176px -33px
+}
+
+.react-tel-input .es {
+    background-position: -192px -33px
+}
+
+.react-tel-input .et {
+    background-position: -208px -33px
+}
+
+.react-tel-input .fi {
+    background-position: -224px -33px
+}
+
+.react-tel-input .fj {
+    background-position: -240px -33px
+}
+
+.react-tel-input .fk {
+    background-position: 0 -44px
+}
+
+.react-tel-input .fm {
+    background-position: -16px -44px
+}
+
+.react-tel-input .fo {
+    background-position: -32px -44px
+}
+
+.react-tel-input .bl,.react-tel-input .fr,.react-tel-input .mf {
+    background-position: -48px -44px
+}
+
+.react-tel-input .ga {
+    background-position: -64px -44px
+}
+
+.react-tel-input .gb {
+    background-position: -80px -44px
+}
+
+.react-tel-input .gd {
+    background-position: -96px -44px
+}
+
+.react-tel-input .ge {
+    background-position: -112px -44px
+}
+
+.react-tel-input .gf {
+    background-position: -128px -44px
+}
+
+.react-tel-input .gh {
+    background-position: -144px -44px
+}
+
+.react-tel-input .gi {
+    background-position: -160px -44px
+}
+
+.react-tel-input .gl {
+    background-position: -176px -44px
+}
+
+.react-tel-input .gm {
+    background-position: -192px -44px
+}
+
+.react-tel-input .gn {
+    background-position: -208px -44px
+}
+
+.react-tel-input .gp {
+    background-position: -224px -44px
+}
+
+.react-tel-input .gq {
+    background-position: -240px -44px
+}
+
+.react-tel-input .gr {
+    background-position: 0 -55px
+}
+
+.react-tel-input .gt {
+    background-position: -16px -55px
+}
+
+.react-tel-input .gu {
+    background-position: -32px -55px
+}
+
+.react-tel-input .gw {
+    background-position: -48px -55px
+}
+
+.react-tel-input .gy {
+    background-position: -64px -55px
+}
+
+.react-tel-input .hk {
+    background-position: -80px -55px
+}
+
+.react-tel-input .hn {
+    background-position: -96px -55px
+}
+
+.react-tel-input .hr {
+    background-position: -112px -55px
+}
+
+.react-tel-input .ht {
+    background-position: -128px -55px
+}
+
+.react-tel-input .hu {
+    background-position: -144px -55px
+}
+
+.react-tel-input .id {
+    background-position: -160px -55px
+}
+
+.react-tel-input .ie {
+    background-position: -176px -55px
+}
+
+.react-tel-input .il {
+    background-position: -192px -55px
+}
+
+.react-tel-input .in {
+    background-position: -208px -55px
+}
+
+.react-tel-input .io {
+    background-position: -224px -55px
+}
+
+.react-tel-input .iq {
+    background-position: -240px -55px
+}
+
+.react-tel-input .ir {
+    background-position: 0 -66px
+}
+
+.react-tel-input .is {
+    background-position: -16px -66px
+}
+
+.react-tel-input .it {
+    background-position: -32px -66px
+}
+
+.react-tel-input .jm {
+    background-position: -48px -66px
+}
+
+.react-tel-input .jo {
+    background-position: -64px -66px
+}
+
+.react-tel-input .jp {
+    background-position: -80px -66px
+}
+
+.react-tel-input .ke {
+    background-position: -96px -66px
+}
+
+.react-tel-input .kg {
+    background-position: -112px -66px
+}
+
+.react-tel-input .kh {
+    background-position: -128px -66px
+}
+
+.react-tel-input .ki {
+    background-position: -144px -66px
+}
+
+.react-tel-input .km {
+    background-position: -160px -66px
+}
+
+.react-tel-input .kn {
+    background-position: -176px -66px
+}
+
+.react-tel-input .kp {
+    background-position: -192px -66px
+}
+
+.react-tel-input .kr {
+    background-position: -208px -66px
+}
+
+.react-tel-input .kw {
+    background-position: -224px -66px
+}
+
+.react-tel-input .ky {
+    background-position: -240px -66px
+}
+
+.react-tel-input .kz {
+    background-position: 0 -77px
+}
+
+.react-tel-input .la {
+    background-position: -16px -77px
+}
+
+.react-tel-input .lb {
+    background-position: -32px -77px
+}
+
+.react-tel-input .lc {
+    background-position: -48px -77px
+}
+
+.react-tel-input .li {
+    background-position: -64px -77px
+}
+
+.react-tel-input .lk {
+    background-position: -80px -77px
+}
+
+.react-tel-input .lr {
+    background-position: -96px -77px
+}
+
+.react-tel-input .ls {
+    background-position: -112px -77px
+}
+
+.react-tel-input .lt {
+    background-position: -128px -77px
+}
+
+.react-tel-input .lu {
+    background-position: -144px -77px
+}
+
+.react-tel-input .lv {
+    background-position: -160px -77px
+}
+
+.react-tel-input .ly {
+    background-position: -176px -77px
+}
+
+.react-tel-input .ma {
+    background-position: -192px -77px
+}
+
+.react-tel-input .mc {
+    background-position: -208px -77px
+}
+
+.react-tel-input .md {
+    background-position: -224px -77px
+}
+
+.react-tel-input .me {
+    background-position: -112px -154px;
+    height: 12px
+}
+
+.react-tel-input .mg {
+    background-position: 0 -88px
+}
+
+.react-tel-input .mh {
+    background-position: -16px -88px
+}
+
+.react-tel-input .mk {
+    background-position: -32px -88px
+}
+
+.react-tel-input .ml {
+    background-position: -48px -88px
+}
+
+.react-tel-input .mm {
+    background-position: -64px -88px
+}
+
+.react-tel-input .mn {
+    background-position: -80px -88px
+}
+
+.react-tel-input .mo {
+    background-position: -96px -88px
+}
+
+.react-tel-input .mp {
+    background-position: -112px -88px
+}
+
+.react-tel-input .mq {
+    background-position: -128px -88px
+}
+
+.react-tel-input .mr {
+    background-position: -144px -88px
+}
+
+.react-tel-input .ms {
+    background-position: -160px -88px
+}
+
+.react-tel-input .mt {
+    background-position: -176px -88px
+}
+
+.react-tel-input .mu {
+    background-position: -192px -88px
+}
+
+.react-tel-input .mv {
+    background-position: -208px -88px
+}
+
+.react-tel-input .mw {
+    background-position: -224px -88px
+}
+
+.react-tel-input .mx {
+    background-position: -240px -88px
+}
+
+.react-tel-input .my {
+    background-position: 0 -99px
+}
+
+.react-tel-input .mz {
+    background-position: -16px -99px
+}
+
+.react-tel-input .na {
+    background-position: -32px -99px
+}
+
+.react-tel-input .nc {
+    background-position: -48px -99px
+}
+
+.react-tel-input .ne {
+    background-position: -64px -99px
+}
+
+.react-tel-input .nf {
+    background-position: -80px -99px
+}
+
+.react-tel-input .ng {
+    background-position: -96px -99px
+}
+
+.react-tel-input .ni {
+    background-position: -112px -99px
+}
+
+.react-tel-input .bq,.react-tel-input .nl {
+    background-position: -128px -99px
+}
+
+.react-tel-input .no {
+    background-position: -144px -99px
+}
+
+.react-tel-input .np {
+    background-position: -160px -99px
+}
+
+.react-tel-input .nr {
+    background-position: -176px -99px
+}
+
+.react-tel-input .nu {
+    background-position: -192px -99px
+}
+
+.react-tel-input .nz {
+    background-position: -208px -99px
+}
+
+.react-tel-input .om {
+    background-position: -224px -99px
+}
+
+.react-tel-input .pa {
+    background-position: -240px -99px
+}
+
+.react-tel-input .pe {
+    background-position: 0 -110px
+}
+
+.react-tel-input .pf {
+    background-position: -16px -110px
+}
+
+.react-tel-input .pg {
+    background-position: -32px -110px
+}
+
+.react-tel-input .ph {
+    background-position: -48px -110px
+}
+
+.react-tel-input .pk {
+    background-position: -64px -110px
+}
+
+.react-tel-input .pl {
+    background-position: -80px -110px
+}
+
+.react-tel-input .pm {
+    background-position: -96px -110px
+}
+
+.react-tel-input .pr {
+    background-position: -112px -110px
+}
+
+.react-tel-input .ps {
+    background-position: -128px -110px
+}
+
+.react-tel-input .pt {
+    background-position: -144px -110px
+}
+
+.react-tel-input .pw {
+    background-position: -160px -110px
+}
+
+.react-tel-input .py {
+    background-position: -176px -110px
+}
+
+.react-tel-input .qa {
+    background-position: -192px -110px
+}
+
+.react-tel-input .re {
+    background-position: -208px -110px
+}
+
+.react-tel-input .ro {
+    background-position: -224px -110px
+}
+
+.react-tel-input .rs {
+    background-position: -240px -110px
+}
+
+.react-tel-input .ru {
+    background-position: 0 -121px
+}
+
+.react-tel-input .rw {
+    background-position: -16px -121px
+}
+
+.react-tel-input .sa {
+    background-position: -32px -121px
+}
+
+.react-tel-input .sb {
+    background-position: -48px -121px
+}
+
+.react-tel-input .sc {
+    background-position: -64px -121px
+}
+
+.react-tel-input .sd {
+    background-position: -80px -121px
+}
+
+.react-tel-input .se {
+    background-position: -96px -121px
+}
+
+.react-tel-input .sg {
+    background-position: -112px -121px
+}
+
+.react-tel-input .sh {
+    background-position: -128px -121px
+}
+
+.react-tel-input .si {
+    background-position: -144px -121px
+}
+
+.react-tel-input .sk {
+    background-position: -160px -121px
+}
+
+.react-tel-input .sl {
+    background-position: -176px -121px
+}
+
+.react-tel-input .sm {
+    background-position: -192px -121px
+}
+
+.react-tel-input .sn {
+    background-position: -208px -121px
+}
+
+.react-tel-input .so {
+    background-position: -224px -121px
+}
+
+.react-tel-input .sr {
+    background-position: -240px -121px
+}
+
+.react-tel-input .ss {
+    background-position: 0 -132px
+}
+
+.react-tel-input .st {
+    background-position: -16px -132px
+}
+
+.react-tel-input .sv {
+    background-position: -32px -132px
+}
+
+.react-tel-input .sx {
+    background-position: -48px -132px
+}
+
+.react-tel-input .sy {
+    background-position: -64px -132px
+}
+
+.react-tel-input .sz {
+    background-position: -80px -132px
+}
+
+.react-tel-input .tc {
+    background-position: -96px -132px
+}
+
+.react-tel-input .td {
+    background-position: -112px -132px
+}
+
+.react-tel-input .tg {
+    background-position: -128px -132px
+}
+
+.react-tel-input .th {
+    background-position: -144px -132px
+}
+
+.react-tel-input .tj {
+    background-position: -160px -132px
+}
+
+.react-tel-input .tk {
+    background-position: -176px -132px
+}
+
+.react-tel-input .tl {
+    background-position: -192px -132px
+}
+
+.react-tel-input .tm {
+    background-position: -208px -132px
+}
+
+.react-tel-input .tn {
+    background-position: -224px -132px
+}
+
+.react-tel-input .to {
+    background-position: -240px -132px
+}
+
+.react-tel-input .tr {
+    background-position: 0 -143px
+}
+
+.react-tel-input .tt {
+    background-position: -16px -143px
+}
+
+.react-tel-input .tv {
+    background-position: -32px -143px
+}
+
+.react-tel-input .tw {
+    background-position: -48px -143px
+}
+
+.react-tel-input .tz {
+    background-position: -64px -143px
+}
+
+.react-tel-input .ua {
+    background-position: -80px -143px
+}
+
+.react-tel-input .ug {
+    background-position: -96px -143px
+}
+
+.react-tel-input .us {
+    background-position: -112px -143px
+}
+
+.react-tel-input .uy {
+    background-position: -128px -143px
+}
+
+.react-tel-input .uz {
+    background-position: -144px -143px
+}
+
+.react-tel-input .va {
+    background-position: -160px -143px
+}
+
+.react-tel-input .vc {
+    background-position: -176px -143px
+}
+
+.react-tel-input .ve {
+    background-position: -192px -143px
+}
+
+.react-tel-input .vg {
+    background-position: -208px -143px
+}
+
+.react-tel-input .vi {
+    background-position: -224px -143px
+}
+
+.react-tel-input .vn {
+    background-position: -240px -143px
+}
+
+.react-tel-input .vu {
+    background-position: 0 -154px
+}
+
+.react-tel-input .wf {
+    background-position: -16px -154px
+}
+
+.react-tel-input .ws {
+    background-position: -32px -154px
+}
+
+.react-tel-input .ye {
+    background-position: -48px -154px
+}
+
+.react-tel-input .za {
+    background-position: -64px -154px
+}
+
+.react-tel-input .zm {
+    background-position: -80px -154px
+}
+
+.react-tel-input .zw {
+    background-position: -96px -154px
+}
+
+.react-tel-input * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box
+}
+
+.react-tel-input .hide {
+    display: none
+}
+
+.react-tel-input .v-hide {
+    visibility: hidden
+}
+
+.react-tel-input input[type=tel],.react-tel-input input[type=text] {
+    position: relative;
+    z-index: 0;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    padding-left: 44px;
+    margin-left: 0;
+    background: #fff;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px #e3e3e3;
+    line-height: 25px;
+    height: 28px;
+    width: 100%
+}
+
+.react-tel-input input[type=tel]:focus,.react-tel-input input[type=text]:focus {
+    border-color: #42bdff;
+    border-left-color: #cacaca
+}
+
+.react-tel-input input[type=tel].invalid-number,.react-tel-input input[type=tel].invalid-number:focus,.react-tel-input input[type=text].invalid-number,.react-tel-input input[type=text].invalid-number:focus {
+    border: 1px solid #d79f9f;
+    background-color: #faf0f0;
+    border-left-color: #cacaca
+}
+
+.react-tel-input .flag-dropdown {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    background-color: #eaeaea;
+    border: 1px solid #cacaca;
+    border-radius: 3px 0 0 3px
+}
+
+.react-tel-input .flag-dropdown.open-dropdown {
+    background: #fff;
+    border-bottom: 0;
+    border-radius: 3px 0 0 0
+}
+
+.react-tel-input .flag-dropdown.open-dropdown .selected-flag {
+    background: #fff;
+    border-radius: 3px 0 0 0
+}
+
+.react-tel-input .flag-dropdown:hover {
+    cursor: pointer
+}
+
+.react-tel-input .flag-dropdown:hover .selected-flag {
+    background-color: #fff
+}
+
+.react-tel-input input[disabled]+.flag-dropdown:hover {
+    cursor: default
+}
+
+.react-tel-input input[disabled]+.flag-dropdown:hover .selected-flag {
+    background-color: transparent
+}
+
+.react-tel-input .selected-flag {
+    z-index: 13;
+    position: relative;
+    width: 38px;
+    height: 26px;
+    padding: 0 0 0 8px;
+    border-radius: 3px 0 0 3px
+}
+
+.react-tel-input .selected-flag .flag {
+    position: absolute;
+    top: 50%;
+    margin-top: -5px
+}
+
+.react-tel-input .selected-flag .arrow {
+    position: relative;
+    top: 50%;
+    margin-top: -2px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #555
+}
+
+.react-tel-input .selected-flag .arrow.up {
+    border-top: none;
+    border-bottom: 4px solid #555
+}
+
+.react-tel-input .country-list {
+    list-style: none;
+    position: absolute;
+    z-index: 2;
+    padding: 0;
+    margin: -1px 0 0 -1px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 400px;
+    max-height: 200px;
+    overflow-y: scroll;
+    border-radius: 0 0 3px 3px;
+    top: 26px
+}
+
+.react-tel-input .country-list .flag {
+    display: inline-block
+}
+
+.react-tel-input .country-list .divider {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ccc
+}
+
+.react-tel-input .country-list .country {
+    padding: 5px 10px
+}
+
+.react-tel-input .country-list .country .dial-code {
+    color: #999
+}
+
+.react-tel-input .country-list .country:hover {
+    background-color: #e8f7fe
+}
+
+.react-tel-input .country-list .country.highlight {
+    background-color: #c7e2f1
+}
+
+.react-tel-input .country-list .flag {
+    margin-right: 6px;
+    margin-top: 2px
+}
+
+.react-tel-input .country-list .country-name {
+    margin-right: 6px
+}
+
+.RegistrationView .error {
+    color: red
+}
+
+.RegistrationView .errorText {
+    text-align: left
+}
+
+.RegistrationView .errorText .persists {
+    padding-top: 20px;
+    text-align: center
+}
+
+.RegistrationView .errorWrapper .btn {
+    margin-top: 20px;
+    margin-bottom: 30px
+}
+
+.RegistrationView .header {
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: 700;
+    color: #1b3a62;
+    margin-bottom: 30px
+}
+
+.RegistrationView .tos {
+    overflow: auto;
+    text-align: left;
+    margin: 20px auto;
+    font-size: 14px
+}
+
+.RegistrationView .btnWrapper {
+    margin-top: 30px
+}
+
+.RegistrationView .done .textWrapper {
+    max-width: 400px;
+    margin: auto
+}
+
+.RegistrationView .done .btn {
+    margin: 30px 0
+}
+
+.RegistrationView .text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333
+}
+
+.RegistrationView .documentNumber {
+    margin-bottom: 15px
+}
+
+.RegistrationView .info {
+    margin: 20px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px
+}
+
+.RegistrationView .registrationWrapper .form {
+    margin-top: 50px
+}
+
+.RegistrationView .registrationWrapper .form .image {
+    height: 350px
+}
+
+.RegistrationView .registrationWrapper .form .inputWrapper {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 58px;
+    margin-right: 10px
+}
+
+.RegistrationView .registrationWrapper .form .inputWrapper .inputText {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    line-height: 30px;
+    font-weight: 400;
+    margin-left: 20px
+}
+
+.RegistrationView .cancel {
+    margin-top: 10px
+}
+
+.RegistrationView .guardianApproval .btnWrapper {
+    margin-top: 40px
+}
+
+.RegistrationView .guardianApproval .swapCards {
+    font-weight: 700
+}
+
+.RegistrationView .confirmApplication .pair {
+    margin: 20px 0
+}
+
+.RegistrationView .confirmApplication .pair .key {
+    color: #333;
+    font-size: 14px
+}
+
+.RegistrationView .confirmApplication .column {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 20px
+}
+
+.RegistrationView .react-tel-input {
+    width: 100%;
+    height: 40px
+}
+
+.RegistrationView .react-tel-input .form-control {
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 46px
+}
+
+.RegistrationView .react-tel-input .selected-flag {
+    height: 98%;
+    border-radius: 20px 0 0 20px!important;
+    padding-left: 10px
+}
+
+.RegistrationView .react-tel-input .flag-dropdown {
+    border-radius: 20px 0 0 20px;
+    background: #f9f8f6;
+    width: 42px
+}
+
+.RegistrationView .react-tel-input .open-dropdown {
+    border-radius: 20px 0 0 0;
+    background: #fff
+}
+
+.RegistrationView .react-tel-input .country-list {
+    margin-top: 12px;
+    text-align: left;
+    width: 248px
+}
+
+.RegistrationView .react-tel-input .flag {
+    background-image: url(/portal/gfx/723494a45f26bb1427c6d43205333ff1.png)!important
+}
+
+.CancelModal {
+    width: 310px
+}
+
+.CancelModal .header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.CancelModal .text {
+    font-size: 14px;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 20px
+}
+
+.TransactionsView {
+    font-size: 12px
+}
+
+.TransactionsView .notice {
+    font-size: 14px;
+    font-weight: 700;
+    color: #999
+}
+
+.TransactionsView .transactions {
+    margin: 10px 0 20px
+}
+
+.TransactionsView .transactions h2 {
+    margin: 0;
+    color: #1b3a62;
+    padding: 20px 0
+}
+
+@media (min-width:600px) {
+    .TransactionsView .transactions h2 {
+        padding: 30px
+    }
+}
+
+@media (min-width:600px) {
+    .TransactionsView .transactions .notice {
+        padding: 0 30px
+    }
+}
+
+.TransactionsView .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.TransactionsView .table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px
+}
+
+@media (min-width:500px) {
+    .TransactionsView .table thead tr {
+        position: static
+    }
+}
+
+@media (min-width:600px) {
+    .TransactionsView .table td:first-child,.TransactionsView .table th:first-child {
+        padding-left: 30px
+    }
+
+    .TransactionsView .table td:last-child,.TransactionsView .table th:last-child {
+        padding-right: 30px
+    }
+}
+
+.TransactionsView .table td {
+    display: block;
+    line-height: 30px;
+    border-top: 1px solid #d8d8d8
+}
+
+.TransactionsView .table td:first-child {
+    border-top: none;
+    margin-top: 5px
+}
+
+.TransactionsView .table td:last-child {
+    margin-bottom: 5px
+}
+
+@media (min-width:500px) {
+    .TransactionsView .table td {
+        display: table-cell;
+        height: 40px;
+        line-height: normal
+    }
+
+    .TransactionsView .table td:first-child {
+        border-top: 1px solid #d8d8d8
+    }
+}
+
+.TransactionsView .table td:before {
+    content: attr(data-th) ": ";
+    font-weight: 700;
+    width: 100px;
+    display: inline-block
+}
+
+@media (min-width:500px) {
+    .TransactionsView .table td:before {
+        display: none
+    }
+}
+
+.TransactionsView .table th {
+    text-align: left;
+    line-height: 18px
+}
+
+.TransactionsView .date,.TransactionsView .time {
+    line-height: 12px
+}
+
+@media (min-width:500px) {
+    .TransactionsView .date,.TransactionsView .time {
+        display: block
+    }
+}
+
+.TransactionsView .date {
+    margin-top: 4px
+}
+
+.TransactionsView .time {
+    margin-left: 4px
+}
+
+@media (min-width:500px) {
+    .TransactionsView .time {
+        font-size: 8px;
+        margin: 0
+    }
+}
+
+/* Quick css fix */
+.countries {
+    width: 100%;
+}
+/* Quick css fix */

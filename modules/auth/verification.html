@@ -1,0 +1,27 @@
+<div class="LogInView">
+  <div class="loginWrapper">
+    <!--<div class="logInMessage">
+      <span>Log in to Smart-ID portal</span>
+    </div>-->
+    <div class="container logInContent">
+      <div class="verificationWrapper">
+        <div class="verificationContent">
+          <div class="verificationCode">
+            <div class="controlCode"><span>Smart-ID verification code</span></div>
+            <span ng-bind="$ctrl.verificationCode"></span>
+          </div>
+
+          <sid-loader></sid-loader>
+
+          <div class="message">
+            <span>Notification is being sent to your mobile phone</span>
+          </div>
+          <div class="message">
+            <span>Please enter your Smart-ID PIN1 code after you have received notification with the verification code
+              that you see above</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
