@@ -17,6 +17,7 @@ $app->post( 'validate', function() use ( $app, $client )
         ->createAuthentication()
         ->withNationalIdentityNumber( $nationalIdentityNumber )
         ->withCountryCode( $countryCode )
+        ->withDisplayText( 'Log in to Smart-ID demo portal' )
         ->withAuthenticationHash( $authenticationHash )
         ->authenticate();
 
