@@ -83,9 +83,8 @@ class CustomerCredentialsValidator
     $birthMonth = (int) substr( $nationalIdentityNumber, 3, 2 );
     $birthDay = (int) substr( $nationalIdentityNumber, 5, 2 );
     $century = $genderAndCenturyNumber % 2 === 0
-        ? 17 + $genderAndCenturyNumber / 2
-        : 17 + ( $genderAndCenturyNumber
-                 + 1 ) / 2;
+        ? 17 + $genderAndCenturyNumber / 2 : 17 + ( $genderAndCenturyNumber
+                                                    + 1 ) / 2;
     $birthYear = 100 * $century + $birthYear;
     if ( !self::isValidDateComponents( $birthYear, $birthMonth, $birthDay, true ) )
     {
@@ -97,7 +96,23 @@ class CustomerCredentialsValidator
 
   private static function isLVNationalIdentityNumberValid( $nationalIdentityNumber )
   {
-    return true;
+    if ( preg_match( '/^[0-9]{6}[-]{0,1}[0-9]{5}$/', $nationalIdentityNumber ) === 0 )
+    {
+      return false;
+    }
+
+    // 161175-19997
+    $nationalIdentityNumber = preg_replace( '/\D/g', '', $nationalIdentityNumber );
+    $birthYear = (int) substr( $nationalIdentityNumber, 0, 2 );
+    $birthMonth = (int) substr( $nationalIdentityNumber, 2, 2 );
+    $birthDay = (int) substr( $nationalIdentityNumber, 4, 2 );
+    $birthYear = $birthYear + 1800 + 100 * (int) substr( $nationalIdentityNumber, 6, 1 );
+    if ( !self::isValidDateComponents( $birthYear, $birthMonth, $birthDay, true ) )
+    {
+      return false;
+    }
+
+    return self::isValidChecksumForLVNationalIdentityNumber( $nationalIdentityNumber );
   }
 
   /**
@@ -178,5 +193,26 @@ class CustomerCredentialsValidator
     }
 
     return true;
+  }
+
+  /**
+   * @param string $nationalIdentityNumber
+   * @return bool
+   */
+  private static function isValidChecksumForLVNationalIdentityNumber( $nationalIdentityNumber )
+  {
+    $weights = array( 10, 5, 8, 4, 2, 1, 6, 3, 7, 9 );
+    $getChecksum = function( $weights, $nationalIdentityNumber )
+    {
+      $checkSum = 0;
+      for ( $i = 0; $i < 10; $i++ )
+      {
+        $checkSum += (int) $nationalIdentityNumber[ $i ] * $weights[ $i ];
+      }
+      return $checkSum + 1 % 11 % 10;
+    };
+
+    $checkSum = $getChecksum( $weights, $nationalIdentityNumber );
+    return $checkSum === (int) substr( $nationalIdentityNumber, 10, 1 );
   }
 }
