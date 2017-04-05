@@ -13,8 +13,9 @@ if [ ! -d '/app/bower_components' ]; then
   cd /app
   git init
   git remote add origin https://github.com/SK-EID/smart-id-php-demo.git
-  git fetch
-  git checkout -t origin/master
+  git fetch --all
+  git checkout HEAD^
+  git checkout -f master
   cd backend
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
