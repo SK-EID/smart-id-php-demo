@@ -94,6 +94,10 @@ class CustomerCredentialsValidator
     return self::isValidChecksumForEEAndLTNationalIdentityNumber( $nationalIdentityNumber );
   }
 
+  /**
+   * @param string $nationalIdentityNumber
+   * @return bool
+   */
   private static function isLVNationalIdentityNumberValid( $nationalIdentityNumber )
   {
     if ( preg_match( '/^[0-9]{6}[-]{0,1}[0-9]{5}$/', $nationalIdentityNumber ) === 0 )
@@ -101,11 +105,10 @@ class CustomerCredentialsValidator
       return false;
     }
 
-    // 161175-19997
-    $nationalIdentityNumber = preg_replace( '/\D/g', '', $nationalIdentityNumber );
-    $birthYear = (int) substr( $nationalIdentityNumber, 0, 2 );
+    $nationalIdentityNumber = preg_replace( '/\D/', '', $nationalIdentityNumber );
+    $birthDay = (int) substr( $nationalIdentityNumber, 0, 2 );
     $birthMonth = (int) substr( $nationalIdentityNumber, 2, 2 );
-    $birthDay = (int) substr( $nationalIdentityNumber, 4, 2 );
+    $birthYear = (int) substr( $nationalIdentityNumber, 4, 2 );
     $birthYear = $birthYear + 1800 + 100 * (int) substr( $nationalIdentityNumber, 6, 1 );
     if ( !self::isValidDateComponents( $birthYear, $birthMonth, $birthDay, true ) )
     {
@@ -209,7 +212,7 @@ class CustomerCredentialsValidator
       {
         $checkSum += (int) $nationalIdentityNumber[ $i ] * $weights[ $i ];
       }
-      return $checkSum + 1 % 11 % 10;
+      return ( $checkSum + 1 ) % 11 % 10;
     };
 
     $checkSum = $getChecksum( $weights, $nationalIdentityNumber );
