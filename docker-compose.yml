@@ -1,11 +1,8 @@
-demo:
-  build: docker
-  container_name: 'sipd'
-  ports:
-    - '32080:80'
-  volumes:
-    - ./:/app
-    - ./docker:/docker
-  command: /bin/bash -c /docker/setup.sh
+version: '3'
+services:
+  demo:
+    build: docker
+    ports:
+      - '32080:80'
 
 # docker-compose up
