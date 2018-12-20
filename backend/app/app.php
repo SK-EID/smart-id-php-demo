@@ -11,7 +11,7 @@ $config = array(
     'host_url'           => 'https://sid.demo.sk.ee/smart-id-rp/v1/',
     'relying_party_uuid' => 'ea6bd57a-506c-4056-be56-233e25a0e6d2',
     'relying_party_name' => 'PHP library',
-    'certificate_level'  => 'QUALIFIED',
+    'certificate_level'  => 'ADVANCED',
 );
 $app['client.config'] = $config;
 $client = new Client();
