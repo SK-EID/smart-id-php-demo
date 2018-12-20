@@ -2,20 +2,11 @@
 
 if [ ! -d '/app/bower_components' ]; then
   NODE_VERSION="7.6.0"
+  GIT_USERNAME="SK-EID" # add your own username here if you have forked the original repository
+  GIT_BRANCH="master"
 
-  # Install node
-  curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz"
-  tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1
-  rm "node-v$NODE_VERSION-linux-x64.tar.gz"
-  ln -s /usr/local/bin/node /usr/local/bin/nodejs
-
-  # Setup demo app backend
   cd /app
-  git init
-  git remote add origin https://github.com/SK-EID/smart-id-php-demo.git
-  git fetch --all
-  git checkout HEAD^
-  git checkout -f master
+  git clone -b "$GIT_BRANCH" "https://github.com/$GIT_USERNAME/smart-id-php-demo.git" .
   cd backend
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
