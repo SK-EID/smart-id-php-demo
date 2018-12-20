@@ -1,6 +1,5 @@
 <?php
 
-use Sk\SmartId\Api\Data\HashType;
 use Sk\SmartId\Api\Data\AuthenticationHash;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -16,12 +15,19 @@ $app->post( '/sign-in', function( Request $request ) use ( $app, $client )
     throw new UserNotFoundException();
   }
 
-  $authenticationHash = AuthenticationHash::generateRandomHash( HashType::SHA512 );
+  $authenticationHash = AuthenticationHash::generate();
   $app['session']->set( 'authenticationHash', $authenticationHash );
-  $app['session']->set( 'tmp_user', array(
-      'country_code'             => $countryCode,
-      'national_identity_number' => $nationalIdentityNumber
-  ) );
+
+  $sessionId = $client->authentication()
+      ->createAuthentication()
+      ->withNationalIdentityNumber( $nationalIdentityNumber )
+      ->withCountryCode( $countryCode )
+      ->withDisplayText( 'Log in to Smart-ID demo portal' )
+      ->withAuthenticationHash( $authenticationHash )
+      ->withCertificateLevel( $app['client.config']['certificate_level'] )
+      ->startAuthenticationAndReturnSessionId();
+
+  $app['session']->set( 'sessionId', $sessionId );
   $response = array(
       'data' => array(
           'verificationCode' => $authenticationHash->calculateVerificationCode()

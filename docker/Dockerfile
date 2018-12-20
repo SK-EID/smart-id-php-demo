@@ -1,4 +1,4 @@
-FROM webdevops/php-apache-dev:ubuntu-15.10
+FROM webdevops/php-apache:ubuntu-15.10
 
 RUN mkdir /docker
 

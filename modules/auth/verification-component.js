@@ -18,13 +18,16 @@
 
     function validate() {
       SidAuthService.postValidate(function(response) {
-        if ( response && response.data && response.data.isSignedIn ) {
+        if ( response && !!response.data && !!response.data.isSignedIn ) {
           SidAuthEventService.notifyOfSignIn(response.data);
           $location.path('/dashboard');
+        } else if (response && !!response.data && !!response.data.isRequestingValidation) {
+          validate();
         }
       }, function(response) {
         if ( response.data.status == 'ERROR' ) {
           $location.search('invalid');
+          $location.search('code', response.data.code);
           $location.path('/sign-in');
         }
       });
