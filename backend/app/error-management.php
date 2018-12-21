@@ -22,6 +22,7 @@ $app->error( function( Exception $e ) use ( $app )
   {
     $error['data'] = $e->getTrace();
     $error['error'] = get_class( $e );
+    $error['code'] = $e->getCode();
     return $app->json( $error );
   }
 

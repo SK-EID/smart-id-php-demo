@@ -2,7 +2,15 @@
   <div class="loginWrapper">
     <div class="logInMessage" ng-class="{'isError': $ctrl.invalid}">
       <span ng-if="!$ctrl.invalid">Log in to Smart-ID demo portal</span>
-      <span ng-if="$ctrl.invalid">Login failed</span>
+      <span ng-if="$ctrl.invalid && $ctrl.code !== 471">Login failed</span>
+      <div ng-if="$ctrl.invalid && $ctrl.code === 471" class="longMessage">
+        <p>You are using a Smart-ID Basic account which can only be used in Swedbank's and SEB's internet bank. Please upgrade your Smart-ID account.
+          You should create a new account electornically using your ID-card or by visiting Swedbanks' or SEB's bank office.</p>
+        <p>See Smart-ID FAQ for more information. <a href="https://www.smart-id.com/help/faq/" target="_blank">https://www.smart-id.com/help/faq/</a></p>
+        <p>Different registration methods: <a href="https://www.smart-id.com/help/faq/#registering-585" target="_blank">https://www.smart-id.com/help/faq/#registering-585</a> (ENG)</p>
+        <p>Requirements for ID-card registration: <a href="https://www.smart-id.com/help/faq/#requirements-for-id-card-registration-1509" target="_blank">https://www.smart-id.com/help/faq/#requirements-for-id-card-registration-1509</a> (ENG)</p>
+        <p>Smart-ID registration in bank office: <a href="https://www.smart-id.com/help/faq/using-smart-id/actions-can-smart-id-customer-service-points/" target="_blank">https://www.smart-id.com/help/faq/using-smart-id/actions-can-smart-id-customer-service-points/</a></p>
+      </div>
     </div>
     <div class="container logInContent">
       <div class="LogInRow clearfix">

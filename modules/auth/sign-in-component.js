@@ -33,6 +33,7 @@
       }, function(response) {
         if ( response.data.status == 'ERROR' ) {
           ctrl.invalid = true;
+          ctrl.code = response.data.code;
         }
       });
     }
@@ -42,6 +43,7 @@
 
       if ($routeParams.invalid) {
         ctrl.invalid = true;
+        ctrl.code = $routeParams.code;
       }
     }
   }
