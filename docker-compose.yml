@@ -4,5 +4,7 @@ services:
     build: docker
     ports:
       - '32080:80'
+    volumes:
+      - .:/app
 
 # docker-compose up
