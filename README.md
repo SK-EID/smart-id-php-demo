@@ -6,11 +6,11 @@ This application illustrates how to implement logging in with Smart-ID on a PHP 
 Setup
 ------------
 Demo has an easy [Docker](https://www.docker.com/what-docker) setup.
-You don't need to download/export repository yourself.
+
 
 1. Install Docker
 2. Clone the whole repo to a local directory
-4. Open command-line in that directory and run following commands:
+4. Open command-line in that directory and run following command:
   
    `docker-compose up --build`
 
