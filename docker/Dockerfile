@@ -22,10 +22,8 @@ RUN source $NVM_DIR/nvm.sh \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-RUN mkdir /docker
+COPY setup.sh /setup.sh
 
-COPY setup.sh /docker/setup.sh
+RUN ["chmod", "+x", "/setup.sh"]
 
-RUN ["chmod", "+x", "/docker/setup.sh"]
-
-CMD /bin/bash -c /docker/setup.sh
+CMD /bin/bash -c /setup.sh
