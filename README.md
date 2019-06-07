@@ -2,6 +2,7 @@ Smart-ID Relying Party PHP Api Demo
 ------------------
 
 This application illustrates how to implement logging in with Smart-ID on a PHP based app.
+**This PHP Demo cannot be used to create digitally signed containers as there no library like DigiDoc4J exists for PHP.**
 
 Setup
 ------------
