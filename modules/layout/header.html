@@ -24,12 +24,9 @@
             fill="#FFF" fill-rule="evenodd"></path>
       </svg>
       <div class="headerContent">
-        <span class="name" ng-bind="$ctrl.userInfo.firstName + ' ' + $ctrl.userInfo.lastName"></span>
-        <div class="nav">
-          <a class="btn btnLink navItem active" href="#/dashboard">
-            <span>My accounts</span>
-          </a>
-
+       <span class="name" ng-bind="'Name: ' + $ctrl.userInfo.firstName + ' ' + $ctrl.userInfo.lastName"></span>
+       <span class="name" ng-bind="'Code: ' + $ctrl.userInfo.personalCode"></span>
+       <div class="nav">
           <button class="btn btnLink navItem logOut" ng-click="$ctrl.signOut()">
             <span>Log out</span>
           </button>

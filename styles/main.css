@@ -1057,7 +1057,7 @@ input:focus {
     right: 24px;
     top: 0;
     bottom: 0;
-    width: 1px;
+    width: 0px;
     background-color: #fff
   }
 }
