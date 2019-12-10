@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-if [ ! -d '/app/bower_components' ]; then
+if [[ ! -d '/app/bower_components' ]]; then
   NODE_VERSION="7.6.0"
 
-  cd backend
+  cd /app/backend
   curl -sS https://getcomposer.org/installer | php
   php composer.phar install
 
