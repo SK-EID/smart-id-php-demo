@@ -15,8 +15,10 @@ use Sk\SmartId\Api\Data\AuthenticationHash;
 use Sk\SmartId\Api\Data\CertificateLevelCode;
 use Sk\SmartId\Api\Data\NationalIdentity;
 use Sk\SmartId\Client;
+use Sk\SmartId\Exception\InvalidParametersException;
 use Sk\SmartId\Exception\SessionTimeoutException;
 use Sk\SmartId\Exception\SmartIdException;
+use Sk\SmartId\Exception\TechnicalErrorException;
 use Sk\SmartId\Exception\UserAccountNotFoundException;
 use Sk\SmartId\Exception\UserRefusedException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -135,16 +137,22 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
                 ->authenticate();
         }
         catch (UserRefusedException $e) {
-            $session->set("error", "Sign on operation cancelled");
+            $session->set("error", "You canceled the sign on operation");
             throw new AuthenticationException("Smart id login failed");
         }
         catch (UserAccountNotFoundException $e) {
-            $session->set("error", "User with national identity code ".$country.$nationalIdentityNumber." does not have smart id. Check the credentials");
+            $session->set("error", "You tried to sign in with national identity \"".$nationalIdentityNumber."\" and country \"".$country."\", but no such user excists in smart-id");
             throw new AuthenticationException("Smart id login failed");
         }
         catch (SessionTimeoutException $e) {
             $session->set("error", "Sign on with smart-id timed out");
             throw new AuthenticationException("Smart id login failed");
+        }
+        catch (InvalidParametersException $e) {
+            $session->set("error", "You entered invalid credentials");
+        }
+        catch (TechnicalErrorException $e) {
+            $session->set("error", "There was a technical error while trying to sign on");
         }
         catch (SmartIdException $e) {
             $this->logger->error("smart id exception", $e->getTrace());

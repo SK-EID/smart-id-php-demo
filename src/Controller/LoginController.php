@@ -24,6 +24,7 @@ class LoginController extends AbstractController
         }
 
         $error = $request->getSession()->get("error");
+
         if (!$error) {
             $error=false;
         }
