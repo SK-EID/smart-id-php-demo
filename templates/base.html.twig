@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}" />
+        {% endblock %}
+    </head>
+    <body>
+    <div class="col-sm-4 text-center">
+        <span>This is a smart id demo application</span>
+    </div>
+    <div class="col-sm-8" align="right">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <form action="{{ path('logout') }}">
+                <input type="submit" value="logout" class="btn btn-primary">
+            </form>
+        {% else %}
+        {% endif %}
+    </div>
+
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('build/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

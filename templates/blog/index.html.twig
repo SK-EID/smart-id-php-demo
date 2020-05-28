@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+<div style="background-image: url('build/images/wallpaper.89d04ce2.jpg');
+            background-size: unset; width: 100%; background-repeat: repeat; min-height: 100vh">
+    <div class="container">
+        <div class="d-flex justify-content-center" style="background-color: white; margin-top: 30px; padding-bottom: 2vh">
+            <div class="card">
+                <div class="card-header">
+                    <div class="container">
+                        <h1>Welcome to the blog user {{ user.name }}! ✅</h1>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="text-info"> All posts</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Body
+                                </th>
+                                <th>
+                                    Author
+                                </th>
+                            </thead>
+                            <tbody>
+                            {% for post in blog_posts_all %}
+                                <tr>
+                                    <td>{{ post.title }}</td>
+                                    <td>{{ post.description }}</td>
+                                    <td>{{ post.body }}</td>
+                                    <td>{{ post.author.name }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="container">
+                        <h1>
+                            Make a new post <span class="flag-icon flag-icon-gr"></span>
+                        </h1>
+
+                        <form action="{{ path('postblog') }}" method="post">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" style="width: 50%" id="title" name="title" placeholder="Enter Post Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea style="width: 50%"
+                                        rows="10" type="text"
+                                        class="form-control" id="description"
+                                        name="description" placeholder="Enter Blog Post Description">
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="body">Post Body</label>
+                                <input type="text" style="width: 50%" class="form-control" id="body" name="body" placeholder="Enter Post Body">
+                            </div>
+                            <input type="submit" class="btn btn-secondary" value="Post">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

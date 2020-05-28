@@ -1,0 +1,25 @@
+# config/packages/security.yaml
+
+security:
+  providers:
+    authors:
+      entity:
+        class: App\Entity\Author
+  firewalls:
+#    verif:
+#      pattern: /verificationcode
+#      security: false
+    main:
+      anonymous: lazy
+
+      logout:
+        path: logout
+        target: login
+
+      guard:
+        provider: authors
+        authenticators:
+          - smart_authenticator
+  access_control:
+    - {path: '^/blog', roles: ROLE_ADMIN}
+    - { path: '^/verificationcode', roles: IS_AUTHENTICATED_ANONYMOUSLY }
