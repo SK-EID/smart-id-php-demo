@@ -1,5 +1,7 @@
 **Smart-ID php demo application**
 
+This application demonstrates how to use the smart-id-php-client in a symfony application to authenticate and authorize users.
+
 ## Requirements
 
 You must have docker installed in order to use the application
