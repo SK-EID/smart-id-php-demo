@@ -75,13 +75,12 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class=\"img-thumbnail\" style=\"background-image: url('build/images/wallpaper.89d04ce2.jpg');
+<div class=\"img-thumbnail\" style=\"background-color: #313131;
             background-size: unset; width: 100%; height: 100vh;\">
-    <h1 class=\"text-center bg-white\" style=\"color: #7abaff\">Hello! Welcome to Smart ID PHP DEMO</h1>
 
     <div class=\"container\">
         <div class=\"row\">
-            <div class=\"col-md-5 mx-auto\">
+            <div class=\"col-sm-12 mx-auto\">
                 <div id=\"first\">
                     <div class=\"myform form \">
                         <div class=\"logo mb-3\">
@@ -90,27 +89,27 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
                             </div>
                         </div>
                         <form action=\"";
-        // line 25
+        // line 24
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("start_login");
         echo "\" method=\"post\" id=\"loginForm\">
                             <div class=\"form-group\">
                                 <label for=\"exampleInputEmail1\">Country</label>
                                 <select class=\"form-control\" name=\"country\" form=\"loginForm\">
                                     <option ";
-        // line 29
-        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 29, $this->source); })()), "EE")) {
+        // line 28
+        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 28, $this->source); })()), "EE")) {
             echo " selected ";
         }
         echo " value=\"EE\">Estonia</option>
                                     <option ";
-        // line 30
-        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 30, $this->source); })()), "LV")) {
+        // line 29
+        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 29, $this->source); })()), "LV")) {
             echo " selected ";
         }
         echo " value=\"LV\">Latvia</option>
                                     <option ";
-        // line 31
-        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 31, $this->source); })()), "LT")) {
+        // line 30
+        if (0 === twig_compare((isset($context["country"]) || array_key_exists("country", $context) ? $context["country"] : (function () { throw new RuntimeError('Variable "country" does not exist.', 30, $this->source); })()), "LT")) {
             echo " selected ";
         }
         echo " value=\"LT\">Lithuania</option>
@@ -119,57 +118,74 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
                             <div class=\"form-group\">
                                 <label for=\"exampleInputEmail1\">National identity code</label>
                                 ";
-        // line 36
-        if ((isset($context["personal_id"]) || array_key_exists("personal_id", $context) ? $context["personal_id"] : (function () { throw new RuntimeError('Variable "personal_id" does not exist.', 36, $this->source); })())) {
-            // line 37
+        // line 35
+        if ((isset($context["personal_id"]) || array_key_exists("personal_id", $context) ? $context["personal_id"] : (function () { throw new RuntimeError('Variable "personal_id" does not exist.', 35, $this->source); })())) {
+            // line 36
             echo "                                    <input class=\"form-control\" type=\"text\" name=\"personal-id\" value=\"";
-            echo twig_escape_filter($this->env, (isset($context["personal_id"]) || array_key_exists("personal_id", $context) ? $context["personal_id"] : (function () { throw new RuntimeError('Variable "personal_id" does not exist.', 37, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["personal_id"]) || array_key_exists("personal_id", $context) ? $context["personal_id"] : (function () { throw new RuntimeError('Variable "personal_id" does not exist.', 36, $this->source); })()), "html", null, true);
             echo "\" disabled>
                                 ";
         } else {
-            // line 39
+            // line 38
             echo "                                    <input class=\"form-control\" type=\"text\" name=\"personal-id\">
                                 ";
         }
-        // line 41
+        // line 40
         echo "                            </div>
 
-                            <div class=\"form-group\">
-                                <p class=\"text-center\">By signing up you accept our <a href=\"#\">Terms Of Use</a></p>
-                            </div>
-
                             <div class=\"col-md-12 text-center \">
-                                <input type=\"submit\" value=\"Login with Smart ID\" class=\"btn btn-success\">
+                                <input type=\"submit\" value=\"Sign in with Smart-ID\" class=\"btn btn-success\">
                             </div>
 
                             ";
-        // line 51
-        if ((isset($context["verification_code"]) || array_key_exists("verification_code", $context) ? $context["verification_code"] : (function () { throw new RuntimeError('Variable "verification_code" does not exist.', 51, $this->source); })())) {
-            // line 52
-            echo "                                <p>
-                                    Please check that the code matches the one in your smart device
-                                </p>
-                                <div class=\"col-md-12 text-center\">
-                                    <input class=\"form-control\" type=\"text\" name=\"personal-id\" value=\"";
-            // line 56
-            echo twig_escape_filter($this->env, (isset($context["verification_code"]) || array_key_exists("verification_code", $context) ? $context["verification_code"] : (function () { throw new RuntimeError('Variable "verification_code" does not exist.', 56, $this->source); })()), "html", null, true);
-            echo "\" disabled>
+        // line 46
+        if ((isset($context["verification_code"]) || array_key_exists("verification_code", $context) ? $context["verification_code"] : (function () { throw new RuntimeError('Variable "verification_code" does not exist.', 46, $this->source); })())) {
+            // line 47
+            echo "                                <div class=\"col-md-12 text-center\">
+                                    <h3 style=\"display: inline\">Your control code: </h3>
+                                    <h2 style=\"display: inline\">";
+            // line 49
+            echo twig_escape_filter($this->env, (isset($context["verification_code"]) || array_key_exists("verification_code", $context) ? $context["verification_code"] : (function () { throw new RuntimeError('Variable "verification_code" does not exist.', 49, $this->source); })()), "html", null, true);
+            echo "</h2>
                                 </div>
                             ";
         }
-        // line 59
+        // line 52
         echo "
                             ";
-        // line 60
-        if ((isset($context["login_error"]) || array_key_exists("login_error", $context) ? $context["login_error"] : (function () { throw new RuntimeError('Variable "login_error" does not exist.', 60, $this->source); })())) {
-            // line 61
+        // line 53
+        if ((isset($context["login_error"]) || array_key_exists("login_error", $context) ? $context["login_error"] : (function () { throw new RuntimeError('Variable "login_error" does not exist.', 53, $this->source); })())) {
+            // line 54
             echo "                                <div class=\"col-md-12 text-center\">
                                     <p class=\"error\">";
-            // line 62
-            echo twig_escape_filter($this->env, (isset($context["login_error"]) || array_key_exists("login_error", $context) ? $context["login_error"] : (function () { throw new RuntimeError('Variable "login_error" does not exist.', 62, $this->source); })()), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, (isset($context["login_error"]) || array_key_exists("login_error", $context) ? $context["login_error"] : (function () { throw new RuntimeError('Variable "login_error" does not exist.', 55, $this->source); })()), "html", null, true);
             echo "</p>
                                 </div>
                             ";
+        }
+        // line 58
+        echo "                            ";
+        if ((isset($context["errors"]) || array_key_exists("errors", $context) ? $context["errors"] : (function () { throw new RuntimeError('Variable "errors" does not exist.', 58, $this->source); })())) {
+            // line 59
+            echo "                                ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["errors"]) || array_key_exists("errors", $context) ? $context["errors"] : (function () { throw new RuntimeError('Variable "errors" does not exist.', 59, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["e"]) {
+                // line 60
+                echo "                                    <div class=\"col-md-12 text-center\">
+                                        <p class=\"error\">";
+                // line 61
+                echo twig_escape_filter($this->env, (isset($context["login_error"]) || array_key_exists("login_error", $context) ? $context["login_error"] : (function () { throw new RuntimeError('Variable "login_error" does not exist.', 61, $this->source); })()), "html", null, true);
+                echo "</p>
+                                    </div>
+                                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['e'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 64
+            echo "                            ";
         }
         // line 65
         echo "                        </form>
@@ -210,7 +226,7 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
 
     public function getDebugInfo()
     {
-        return array (  194 => 79,  186 => 73,  184 => 72,  175 => 65,  169 => 62,  166 => 61,  164 => 60,  161 => 59,  155 => 56,  149 => 52,  147 => 51,  135 => 41,  131 => 39,  125 => 37,  123 => 36,  113 => 31,  107 => 30,  101 => 29,  94 => 25,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  210 => 79,  202 => 73,  200 => 72,  191 => 65,  188 => 64,  179 => 61,  176 => 60,  171 => 59,  168 => 58,  162 => 55,  159 => 54,  157 => 53,  154 => 52,  148 => 49,  144 => 47,  142 => 46,  134 => 40,  130 => 38,  124 => 36,  122 => 35,  112 => 30,  106 => 29,  100 => 28,  93 => 24,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -225,13 +241,12 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class=\"img-thumbnail\" style=\"background-image: url('build/images/wallpaper.89d04ce2.jpg');
+<div class=\"img-thumbnail\" style=\"background-color: #313131;
             background-size: unset; width: 100%; height: 100vh;\">
-    <h1 class=\"text-center bg-white\" style=\"color: #7abaff\">Hello! Welcome to Smart ID PHP DEMO</h1>
 
     <div class=\"container\">
         <div class=\"row\">
-            <div class=\"col-md-5 mx-auto\">
+            <div class=\"col-sm-12 mx-auto\">
                 <div id=\"first\">
                     <div class=\"myform form \">
                         <div class=\"logo mb-3\">
@@ -257,20 +272,14 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
                                 {% endif %}
                             </div>
 
-                            <div class=\"form-group\">
-                                <p class=\"text-center\">By signing up you accept our <a href=\"#\">Terms Of Use</a></p>
-                            </div>
-
                             <div class=\"col-md-12 text-center \">
-                                <input type=\"submit\" value=\"Login with Smart ID\" class=\"btn btn-success\">
+                                <input type=\"submit\" value=\"Sign in with Smart-ID\" class=\"btn btn-success\">
                             </div>
 
                             {% if verification_code %}
-                                <p>
-                                    Please check that the code matches the one in your smart device
-                                </p>
                                 <div class=\"col-md-12 text-center\">
-                                    <input class=\"form-control\" type=\"text\" name=\"personal-id\" value=\"{{ verification_code }}\" disabled>
+                                    <h3 style=\"display: inline\">Your control code: </h3>
+                                    <h2 style=\"display: inline\">{{ verification_code }}</h2>
                                 </div>
                             {% endif %}
 
@@ -278,6 +287,13 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
                                 <div class=\"col-md-12 text-center\">
                                     <p class=\"error\">{{ login_error }}</p>
                                 </div>
+                            {% endif %}
+                            {% if errors %}
+                                {% for e in errors %}
+                                    <div class=\"col-md-12 text-center\">
+                                        <p class=\"error\">{{ login_error }}</p>
+                                    </div>
+                                {% endfor %}
                             {% endif %}
                         </form>
 
@@ -295,6 +311,6 @@ class __TwigTemplate_3fea875f2539d6ce23e93f96684563218006555ea01bba0008b422922b1
     {% endif %}
 </div>
 {% endblock %}
-", "login/index.html.twig", "/home/andreas/spaces/SK/smart-id-symfony-demo/templates/login/index.html.twig");
+", "login/index.html.twig", "/home/andreas/spaces/SK/smart-id-php-demo/templates/login/index.html.twig");
     }
 }

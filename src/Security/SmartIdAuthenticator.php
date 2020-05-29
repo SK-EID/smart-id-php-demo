@@ -135,9 +135,11 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
                 ->withAuthenticationHash( $authenticationHash )
                 ->withCertificateLevel( CertificateLevelCode::QUALIFIED ) // Certificate level can either be "QUALIFIED" or "ADVANCED"
                 ->authenticate();
+
+            $session->set("full_name" ,$authenticationResponse->getCertificateInstance()->getSubject()->getCN());
         }
         catch (UserRefusedException $e) {
-            $session->set("error", "You canceled the sign on operation");
+            $session->set("error", "You canceled the sign in operation");
             throw new AuthenticationException("Smart id login failed");
         }
         catch (UserAccountNotFoundException $e) {
@@ -145,14 +147,14 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
             throw new AuthenticationException("Smart id login failed");
         }
         catch (SessionTimeoutException $e) {
-            $session->set("error", "Sign on with smart-id timed out");
+            $session->set("error", "Sign in with smart-id timed out");
             throw new AuthenticationException("Smart id login failed");
         }
         catch (InvalidParametersException $e) {
             $session->set("error", "You entered invalid credentials");
         }
         catch (TechnicalErrorException $e) {
-            $session->set("error", "There was a technical error while trying to sign on");
+            $session->set("error", "There was a technical error while trying to sign in");
         }
         catch (SmartIdException $e) {
             $this->logger->error("smart id exception", $e->getTrace());
@@ -172,6 +174,11 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
         foreach ($authenticationResult->getErrors() as $e) {
             $this->logger->info($e);
         }
+
+        if (!$authenticationResult->isValid()) {
+            $session->set("errors", $authenticationResult->getErrors());
+        }
+
         // authentication validity result
         return $authenticationResult->isValid();
     }

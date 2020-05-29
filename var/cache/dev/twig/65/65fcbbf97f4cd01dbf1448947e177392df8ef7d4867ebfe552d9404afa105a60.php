@@ -55,34 +55,38 @@ class __TwigTemplate_a2b7d862179c159e319e20b5a4e63a87bc6b31e351086290cba79f4dbfa
         // line 9
         echo "    </head>
     <body>
-    <div class=\"col-sm-4 text-center\">
-        <span>This is a smart id demo application</span>
-    </div>
-    <div class=\"col-sm-8\" align=\"right\">
-        ";
-        // line 15
+    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-sm-11 text-center\">
+                <h1>This is a Smart-ID PHP symfony demo application. <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters\">List of test users</a></h1>
+            </div>
+            <div class=\"col-sm-1\" align=\"right\">
+                ";
+        // line 17
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 16
-            echo "            <form action=\"";
+            // line 18
+            echo "                    <form action=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
             echo "\">
-                <input type=\"submit\" value=\"logout\" class=\"btn btn-primary\">
-            </form>
-        ";
+                        <input type=\"submit\" value=\"logout\" class=\"btn btn-primary\">
+                    </form>
+                ";
         } else {
-            // line 20
-            echo "        ";
+            // line 22
+            echo "                ";
         }
-        // line 21
-        echo "    </div>
+        // line 23
+        echo "            </div>
+        </div>
+    </div>
 
         ";
-        // line 23
+        // line 27
         $this->displayBlock('body', $context, $blocks);
-        // line 25
+        // line 29
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 28
+        // line 32
         echo "    </body>
 </html>
 ";
@@ -121,28 +125,28 @@ class __TwigTemplate_a2b7d862179c159e319e20b5a4e63a87bc6b31e351086290cba79f4dbfa
 
     }
 
-    // line 23
+    // line 27
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 24
+        // line 28
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
 
-    // line 25
+    // line 29
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 26
+        // line 30
         echo "            <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/app.js"), "html", null, true);
         echo "\"></script>
@@ -164,7 +168,7 @@ class __TwigTemplate_a2b7d862179c159e319e20b5a4e63a87bc6b31e351086290cba79f4dbfa
 
     public function getDebugInfo()
     {
-        return array (  146 => 26,  139 => 25,  132 => 24,  125 => 23,  115 => 7,  108 => 6,  95 => 5,  86 => 28,  83 => 25,  81 => 23,  77 => 21,  74 => 20,  66 => 16,  64 => 15,  56 => 9,  54 => 6,  50 => 5,  44 => 1,);
+        return array (  150 => 30,  143 => 29,  136 => 28,  129 => 27,  119 => 7,  112 => 6,  99 => 5,  90 => 32,  87 => 29,  85 => 27,  79 => 23,  76 => 22,  68 => 18,  66 => 17,  56 => 9,  54 => 6,  50 => 5,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -179,16 +183,20 @@ class __TwigTemplate_a2b7d862179c159e319e20b5a4e63a87bc6b31e351086290cba79f4dbfa
         {% endblock %}
     </head>
     <body>
-    <div class=\"col-sm-4 text-center\">
-        <span>This is a smart id demo application</span>
-    </div>
-    <div class=\"col-sm-8\" align=\"right\">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <form action=\"{{ path('logout') }}\">
-                <input type=\"submit\" value=\"logout\" class=\"btn btn-primary\">
-            </form>
-        {% else %}
-        {% endif %}
+    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-sm-11 text-center\">
+                <h1>This is a Smart-ID PHP symfony demo application. <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters\">List of test users</a></h1>
+            </div>
+            <div class=\"col-sm-1\" align=\"right\">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <form action=\"{{ path('logout') }}\">
+                        <input type=\"submit\" value=\"logout\" class=\"btn btn-primary\">
+                    </form>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
     </div>
 
         {% block body %}
@@ -198,6 +206,6 @@ class __TwigTemplate_a2b7d862179c159e319e20b5a4e63a87bc6b31e351086290cba79f4dbfa
         {% endblock %}
     </body>
 </html>
-", "base.html.twig", "/home/andreas/spaces/SK/smart-id-symfony-demo/templates/base.html.twig");
+", "base.html.twig", "/home/andreas/spaces/SK/smart-id-php-demo/templates/base.html.twig");
     }
 }

@@ -8,16 +8,20 @@
         {% endblock %}
     </head>
     <body>
-    <div class="col-sm-4 text-center">
-        <span>This is a smart id demo application</span>
-    </div>
-    <div class="col-sm-8" align="right">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <form action="{{ path('logout') }}">
-                <input type="submit" value="logout" class="btn btn-primary">
-            </form>
-        {% else %}
-        {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 text-center">
+                <h1>This is a Smart-ID PHP symfony demo application. <a target="_blank" rel="noopener noreferrer" href="https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters">List of test users</a></h1>
+            </div>
+            <div class="col-sm-1" align="right">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <form action="{{ path('logout') }}">
+                        <input type="submit" value="logout" class="btn btn-primary">
+                    </form>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
     </div>
 
         {% block body %}

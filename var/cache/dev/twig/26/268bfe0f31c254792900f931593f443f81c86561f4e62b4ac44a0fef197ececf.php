@@ -70,16 +70,16 @@ class __TwigTemplate_e90f7af3e23b1265b13fce4ef39aafc010281ec2b2093c2ac47863e4e17
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div style=\"background-image: url('build/images/wallpaper.89d04ce2.jpg');
+        echo "<div style=\"background-color: #313131;
             background-size: unset; width: 100%; background-repeat: repeat; min-height: 100vh\">
     <div class=\"container\">
         <div class=\"d-flex justify-content-center\" style=\"background-color: white; margin-top: 30px; padding-bottom: 2vh\">
             <div class=\"card\">
                 <div class=\"card-header\">
                     <div class=\"container\">
-                        <h1>Welcome to the blog user ";
+                        <h1>Welcome to the blog ";
         // line 13
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 13, $this->source); })()), "name", [], "any", false, false, false, 13), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["full_name"]) || array_key_exists("full_name", $context) ? $context["full_name"] : (function () { throw new RuntimeError('Variable "full_name" does not exist.', 13, $this->source); })()), "html", null, true);
         echo "! ✅</h1>
                         <div class=\"row\">
                             <div class=\"col-sm-12\">
@@ -201,14 +201,14 @@ class __TwigTemplate_e90f7af3e23b1265b13fce4ef39aafc010281ec2b2093c2ac47863e4e17
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-<div style=\"background-image: url('build/images/wallpaper.89d04ce2.jpg');
+<div style=\"background-color: #313131;
             background-size: unset; width: 100%; background-repeat: repeat; min-height: 100vh\">
     <div class=\"container\">
         <div class=\"d-flex justify-content-center\" style=\"background-color: white; margin-top: 30px; padding-bottom: 2vh\">
             <div class=\"card\">
                 <div class=\"card-header\">
                     <div class=\"container\">
-                        <h1>Welcome to the blog user {{ user.name }}! ✅</h1>
+                        <h1>Welcome to the blog {{ full_name }}! ✅</h1>
                         <div class=\"row\">
                             <div class=\"col-sm-12\">
                                 <h1 class=\"text-info\"> All posts</h1>
@@ -277,6 +277,6 @@ class __TwigTemplate_e90f7af3e23b1265b13fce4ef39aafc010281ec2b2093c2ac47863e4e17
     </div>
 </div>
 {% endblock %}
-", "blog/index.html.twig", "/home/andreas/spaces/SK/smart-id-symfony-demo/templates/blog/index.html.twig");
+", "blog/index.html.twig", "/home/andreas/spaces/SK/smart-id-php-demo/templates/blog/index.html.twig");
     }
 }

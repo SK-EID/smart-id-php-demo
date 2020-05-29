@@ -13,6 +13,13 @@ use Symfony\Component\Security\Core\Security;
 class LoginController extends AbstractController
 {
 
+    /**
+     * @Route("/", name="home")
+     */
+    public function index(Security $security, Request $request) {
+        return $this->login($security, $request);
+    }
+
 
     /**
      * @Route("/login", name="login")
@@ -24,6 +31,7 @@ class LoginController extends AbstractController
         }
 
         $error = $request->getSession()->get("error");
+        $errors = $request->getSession()->get("errors");
 
         if (!$error) {
             $error=false;
@@ -34,7 +42,8 @@ class LoginController extends AbstractController
             'verification_code' => false,
             'personal_id' => false,
             'login_error' => $error,
-            'country' => "NO"
+            'country' => "NO",
+            'errors' => $errors
         ]);
     }
 
@@ -61,7 +70,8 @@ class LoginController extends AbstractController
             'verification_code' => $verificationCode,
             'personal_id' => $nationalIdentityNumber,
             'login_error' => false,
-            'country' => $country
+            'country' => $country,
+            'errors' => false
         ]);
     }
 

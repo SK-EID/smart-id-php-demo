@@ -1,6 +1,6 @@
 cd /app
 
-sleep 15
+sleep 7
 
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
