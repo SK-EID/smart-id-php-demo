@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.project_dir">/home/andreas/spaces/SK/smart-id-symfony-demo</parameter>
+    <parameter key="kernel.project_dir">/home/andreas/spaces/SK/smart-id-php-demo</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
-    <parameter key="kernel.cache_dir">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/home/andreas/spaces/SK/smart-id-symfony-demo/var/log</parameter>
+    <parameter key="kernel.cache_dir">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/home/andreas/spaces/SK/smart-id-php-demo/var/log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
@@ -20,43 +20,43 @@
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/framework-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/framework-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/doctrine/doctrine-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/doctrine/doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="DoctrineMigrationsBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/doctrine/doctrine-migrations-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/doctrine/doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/sensio/framework-extra-bundle/src</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/sensio/framework-extra-bundle/src</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/twig-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/twig-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\TwigBundle</parameter>
       </parameter>
       <parameter key="TwigExtraBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/twig/extra-bundle/src</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/twig/extra-bundle/src</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
       </parameter>
       <parameter key="MakerBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/maker-bundle/src</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/maker-bundle/src</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
       </parameter>
       <parameter key="DoctrineFixturesBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/doctrine/doctrine-fixtures-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/doctrine/doctrine-fixtures-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/security-bundle</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/security-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
       <parameter key="WebpackEncoreBundle" type="collection">
-        <parameter key="path">/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/webpack-encore-bundle/src</parameter>
+        <parameter key="path">/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/webpack-encore-bundle/src</parameter>
         <parameter key="namespace">Symfony\WebpackEncoreBundle</parameter>
       </parameter>
     </parameter>
@@ -80,16 +80,16 @@
       <parameter key="cookie_samesite">lax</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="asset.request_context.base_path"></parameter>
     <parameter key="asset.request_context.secure">false</parameter>
     <parameter key="validator.mapping.cache.prefix"></parameter>
-    <parameter key="validator.mapping.cache.file">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="data_collector.templates" type="collection"/>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
+    <parameter key="debug.container.dump">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
@@ -161,9 +161,9 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
-    <parameter key="doctrine_migrations.dir_name">/home/andreas/spaces/SK/smart-id-symfony-demo/src/Migrations</parameter>
+    <parameter key="doctrine_migrations.dir_name">/home/andreas/spaces/SK/smart-id-php-demo/src/Migrations</parameter>
     <parameter key="doctrine_migrations.namespace">DoctrineMigrations</parameter>
     <parameter key="doctrine_migrations.table_name">migration_versions</parameter>
     <parameter key="doctrine_migrations.column_name">version</parameter>
@@ -176,7 +176,7 @@
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
-    <parameter key="twig.default_path">/home/andreas/spaces/SK/smart-id-symfony-demo/templates</parameter>
+    <parameter key="twig.default_path">/home/andreas/spaces/SK/smart-id-php-demo/templates</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
     <parameter key="security.access.denied_url">null</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
@@ -286,7 +286,7 @@
     <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_warmer"/>
       <argument>true</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_clearer"/>
@@ -394,21 +394,21 @@
         <argument>/_fragment</argument>
       </call>
     </service>
-    <service id=".2_~W1fHWzc" public="false">
+    <service id=".2_~2ehb.8A" public="false">
       <argument type="service" id="request_stack"/>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="getAndCleanOutputBuffer"/>
     </service>
-    <service id=".1_~W1fHWzc" public="false">
+    <service id=".1_~2ehb.8A" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="isDebug"/>
     </service>
     <service id="error_handler.error_renderer.html" class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer">
-      <argument type="service" id=".1_~W1fHWzc"/>
+      <argument type="service" id=".1_~2ehb.8A"/>
       <argument>UTF-8</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
-      <argument type="service" id=".2_~W1fHWzc"/>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
+      <argument type="service" id=".2_~2ehb.8A"/>
       <argument type="service" id="logger" on-invalid="null"/>
     </service>
     <service id="console.error_listener" class="Symfony\Component\Console\EventListener\ErrorListener" public="false">
@@ -428,7 +428,7 @@
     <service id="console.command.assets_install" class="Symfony\Bundle\FrameworkBundle\Command\AssetsInstallCommand" public="false">
       <tag name="console.command" command="assets:install"/>
       <argument type="service" id="filesystem"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <call method="setName">
         <argument>assets:install</argument>
       </call>
@@ -599,9 +599,9 @@
     <service id="cache.app" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>kqJdENvuKu</argument>
+      <argument>aC86u3uguV</argument>
       <argument>0</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
@@ -613,50 +613,50 @@
     <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>B-0ZOJLKOT</argument>
+      <argument>nbSaKe4-Ru</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>ZXeWbo9Kf6</argument>
+      <argument>d9jjilem-T</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>59BXtDeadh</argument>
+      <argument>6Cu+4EmAIg</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>uTCxSmMQ2d</argument>
+      <argument>sSzConNiqd</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.property_info" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>x9o5C9d-r5</argument>
+      <argument>pLuI-GkfCu</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -666,7 +666,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -695,7 +695,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
@@ -805,8 +805,8 @@
       <argument>0</argument>
       <argument>false</argument>
     </service>
-    <service id=".1_NativeFileSessionHandler~xxQnYE9" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/sessions</argument>
+    <service id=".1_NativeFileSessionHandler~gtEdW1H" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/sessions</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -832,12 +832,12 @@
       <factory service="session" method="getBag"/>
     </service>
     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/sessions</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler.native_file" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler" public="false">
-      <argument type="service" id=".1_NativeFileSessionHandler~xxQnYE9"/>
+      <argument type="service" id=".1_NativeFileSessionHandler~gtEdW1H"/>
     </service>
     <service id="session.abstract_handler" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler" public="false">
       <argument></argument>
@@ -897,7 +897,7 @@
       <argument></argument>
     </service>
     <service id="assets._version__default" class="Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/public/build/manifest.json</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/public/build/manifest.json</argument>
     </service>
     <service id="assets._default_package" class="Symfony\Component\Asset\PathPackage" public="false">
       <argument></argument>
@@ -933,10 +933,10 @@
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/validation.php</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/validation.php</argument>
     </service>
     <service id="validator.mapping.cache.adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/validation.php</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -1355,7 +1355,7 @@
       <argument type="service" id=".service_locator.ld1.260.router.default"/>
       <argument>kernel::loadRoutes</argument>
       <argument type="collection">
-        <argument key="cache_dir">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev</argument>
+        <argument key="cache_dir">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\CompiledUrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\CompiledUrlGeneratorDumper</argument>
@@ -1394,7 +1394,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="logger" on-invalid="ignore"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <argument>true</argument>
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" class="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" public="true">
@@ -1419,12 +1419,12 @@
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
     </service>
-    <service id=".2_PhpArrayAdapter~iU5s1aG" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/annotations.php</argument>
+    <service id=".2_PhpArrayAdapter~o.av.Al" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
-    <service id=".1_ArrayCache~iU5s1aG" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
+    <service id=".1_ArrayCache~o.av.Al" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
     <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader" public="false">
       <call method="addGlobalIgnoredName">
         <argument>required</argument>
@@ -1439,7 +1439,7 @@
     <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
       <tag name="annotations.cached_reader"/>
       <argument type="service" id="annotations.reader"/>
-      <argument type="service" id=".1_ArrayCache~iU5s1aG"/>
+      <argument type="service" id=".1_ArrayCache~o.av.Al"/>
       <argument>true</argument>
       <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
     </service>
@@ -1449,12 +1449,12 @@
     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="annotations.reader"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/annotations.php</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/annotations.php</argument>
       <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
       <argument>true</argument>
     </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
-      <argument type="service" id=".2_PhpArrayAdapter~iU5s1aG"/>
+      <argument type="service" id=".2_PhpArrayAdapter~o.av.Al"/>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor" public="false">
       <argument>false</argument>
@@ -1464,11 +1464,11 @@
     </service>
     <service id="secrets.vault" class="Symfony\Bundle\FrameworkBundle\Secrets\SodiumVault">
       <tag name="container.env_var_loader"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/config/secrets/dev</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/config/secrets/dev</argument>
       <argument>%env(base64:default::SYMFONY_DECRYPTION_SECRET)%</argument>
     </service>
     <service id="secrets.local_vault" class="Symfony\Bundle\FrameworkBundle\Secrets\DotenvVault">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/.env.dev.local</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/.env.dev.local</argument>
     </service>
     <service id="mime_types" class="Symfony\Component\Mime\MimeTypes" public="false">
       <call method="setDefault">
@@ -1586,7 +1586,7 @@
       <argument type="collection"/>
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
     </service>
-    <service id=".1_ServiceLocator~dkuZHoY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".1_ServiceLocator~jSL9XGR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer" public="false">
@@ -1743,7 +1743,7 @@
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/doctrine/orm/Proxies</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -1773,7 +1773,7 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/src/Entity</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/src/Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -1950,7 +1950,7 @@
     <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter">
       <argument type="service" id="argument_metadata_factory"/>
     </service>
-    <service id=".1_~ri9kTkq" public="false">
+    <service id=".1_~FRrte6T" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" method="isDebug"/>
@@ -1959,7 +1959,7 @@
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
         <argument key="autoescape">name</argument>
-        <argument key="cache">/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/twig</argument>
+        <argument key="cache">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -2047,7 +2047,7 @@
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
       <argument type="service" id="kernel"/>
       <argument type="collection"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/templates</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/templates</argument>
     </service>
     <service id="twig.template_cache_warmer" class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
@@ -2058,33 +2058,33 @@
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader" public="false">
       <tag name="twig.loader"/>
       <argument type="collection"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/framework-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/framework-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>!Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/security-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/vendor/symfony/security-bundle/Resources/views</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>!Security</argument>
       </call>
       <call method="addPath">
-        <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/templates</argument>
+        <argument>/home/andreas/spaces/SK/smart-id-php-demo/templates</argument>
       </call>
     </service>
     <service id="twig.loader.chain" class="Twig\Loader\ChainLoader" public="false"/>
@@ -2110,7 +2110,7 @@
     <service id="twig.extension.code" class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <argument>UTF-8</argument>
     </service>
     <service id="twig.extension.routing" class="Symfony\Bridge\Twig\Extension\RoutingExtension" public="false">
@@ -2156,14 +2156,14 @@
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" public="false">
       <argument type="service" id="twig"/>
       <argument type="service" id="error_handler.error_renderer.html"/>
-      <argument type="service" id=".1_~ri9kTkq"/>
+      <argument type="service" id=".1_~FRrte6T"/>
     </service>
     <service id="twig.command.debug" class="Symfony\Bridge\Twig\Command\DebugCommand" public="false">
       <tag name="console.command" command="debug:twig"/>
       <argument type="service" id="twig"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <argument>%kernel.bundles_metadata%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/templates</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/templates</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
       <call method="setName">
         <argument>debug:twig</argument>
@@ -2181,8 +2181,8 @@
       <argument type="service" id="filesystem"/>
       <argument type="service" id="maker.autoloader_util"/>
       <argument type="service" id="maker.file_link_formatter"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/templates</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/templates</argument>
     </service>
     <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder" public="false">
       <argument>App</argument>
@@ -2247,7 +2247,7 @@
       <tag name="maker.command"/>
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.doctrine_helper"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
       <argument type="service" id="maker.generator"/>
       <argument type="service" id="maker.entity_class_generator"/>
     </service>
@@ -2311,7 +2311,7 @@
     </service>
     <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration" public="false">
       <tag name="maker.command"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo</argument>
     </service>
     <service id="doctrine.fixtures_load_command" class="Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand">
       <tag name="console.command" command="doctrine:fixtures:load"/>
@@ -2461,10 +2461,10 @@
     <service id="cache.security_expression_language" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>XyfG4dKBgL</argument>
+      <argument>WjLJajIVEy</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -2901,7 +2901,7 @@
         <argument>security:encode-password</argument>
       </call>
     </service>
-    <service id=".1_ServiceLocator~VUhrd1j" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".1_ServiceLocator~BNacBny" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="webpack_encore.entrypoint_lookup_collection" type="service" id="webpack_encore.entrypoint_lookup_collection"/>
@@ -2920,28 +2920,28 @@
     </service>
     <service id="webpack_encore.twig_entry_files_extension" class="Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension" public="false">
       <tag name="twig.extension"/>
-      <argument type="service" id=".1_ServiceLocator~VUhrd1j"/>
+      <argument type="service" id=".1_ServiceLocator~BNacBny"/>
     </service>
     <service id="webpack_encore.entrypoint_lookup.cache_warmer" class="Symfony\WebpackEncoreBundle\CacheWarmer\EntrypointCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="collection">
-        <argument key="_default">/home/andreas/spaces/SK/smart-id-symfony-demo/public/build/entrypoints.json</argument>
+        <argument key="_default">/home/andreas/spaces/SK/smart-id-php-demo/public/build/entrypoints.json</argument>
       </argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/webpack_encore.cache.php</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/webpack_encore.cache.php</argument>
       <argument type="service" id="cache.webpack_encore"/>
     </service>
     <service id="webpack_encore.cache" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/webpack_encore.cache.php</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/webpack_encore.cache.php</argument>
       <argument type="service" id="cache.webpack_encore"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
     <service id="cache.webpack_encore" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>x+GZpaayAD</argument>
+      <argument>RqtMqxXniu</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/var/cache/dev/pools</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -2954,7 +2954,7 @@
     </service>
     <service id="webpack_encore.entrypoint_lookup[_default]" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookup">
       <tag name="kernel.reset" method="reset"/>
-      <argument>/home/andreas/spaces/SK/smart-id-symfony-demo/public/build/entrypoints.json</argument>
+      <argument>/home/andreas/spaces/SK/smart-id-php-demo/public/build/entrypoints.json</argument>
       <argument>null</argument>
       <argument>_default</argument>
       <argument>true</argument>
@@ -3193,15 +3193,17 @@
         <argument key="security" type="service" id="security.helper"/>
       </argument>
     </service>
-    <service id=".service_locator.5M7kt7R" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.U19DvOP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\BlogController::addPost" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\BlogController::showPosts" type="service" id=".service_locator.astL82s"/>
+        <argument key="App\Controller\LoginController::index" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\LoginController::login" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\LoginController::logout" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\BlogController:addPost" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\BlogController:showPosts" type="service" id=".service_locator.astL82s"/>
+        <argument key="App\Controller\LoginController:index" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\LoginController:login" type="service" id=".service_locator.astL82s"/>
         <argument key="App\Controller\LoginController:logout" type="service" id=".service_locator.astL82s"/>
       </argument>
@@ -3433,12 +3435,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.5M7kt7R"/>
+      <argument type="service" id=".service_locator.U19DvOP"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.5M7kt7R"/>
+      <argument type="service" id=".service_locator.U19DvOP"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.sBKsfCL"/>
@@ -3699,10 +3701,10 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.5M7kt7R"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.U19DvOP"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger" public="false"/>
-    <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~VUhrd1j" public="false"/>
+    <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~BNacBny" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver" public="false"/>

@@ -6,6 +6,7 @@ return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
     'blog' => [[], ['_controller' => 'App\\Controller\\BlogController::showPosts'], [], [['text', '/blog']], [], []],
     'postblog' => [[], ['_controller' => 'App\\Controller\\BlogController::addPost'], [], [['text', '/newPost']], [], []],
+    'home' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/']], [], []],
     'login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], []],
     'start_login' => [[], ['_controller' => 'App\\Controller\\LoginController::startLogin'], [], [['text', '/startLogin']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], []],

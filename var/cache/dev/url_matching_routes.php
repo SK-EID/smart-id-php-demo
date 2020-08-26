@@ -10,6 +10,7 @@ return [
     [ // $staticRoutes
         '/blog' => [[['_route' => 'blog', '_controller' => 'App\\Controller\\BlogController::showPosts'], null, null, null, false, false, null]],
         '/newPost' => [[['_route' => 'postblog', '_controller' => 'App\\Controller\\BlogController::addPost'], null, ['POST' => 0], null, false, false, null]],
+        '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
         '/startLogin' => [[['_route' => 'start_login', '_controller' => 'App\\Controller\\LoginController::startLogin'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, null, null, false, false, null]],
