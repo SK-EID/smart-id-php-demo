@@ -144,7 +144,7 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
                 ->withSemanticsIdentifier( $identity ) // or with document number: ->withDocumentNumber( 'PNOEE-10101010005-Z1B2-Q' )
                 ->withAuthenticationHash( $authenticationHash )
                 ->withAllowedInteractionsOrder(array(
-                    Interaction::ofTypeConfirmationMessageAndVerificationCodeChoice("dsdfsfasd"),
+                    Interaction::ofTypeConfirmationMessageAndVerificationCodeChoice("A confirmation message with Verification code choice"),
                     Interaction::ofTypeConfirmationMessage("Confirmation message with length up to 200"),
                     Interaction::ofTypeDisplayTextAndPIN("Text and pin"),
                 ))
