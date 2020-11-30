@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Loads an SQL file and executes it.
+ *
+ * @deprecated Use a database client application instead.
  */
 class ImportDoctrineCommand extends ImportCommand
 {
@@ -29,6 +31,8 @@ class ImportDoctrineCommand extends ImportCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        @trigger_error(sprintf('The "%s" (doctrine:database:import) command is deprecated, use a database client instead.', self::class), E_USER_DEPRECATED);
+
         DoctrineCommandHelper::setApplicationConnection($this->getApplication(), $input->getOption('connection'));
 
         return parent::execute($input, $output);

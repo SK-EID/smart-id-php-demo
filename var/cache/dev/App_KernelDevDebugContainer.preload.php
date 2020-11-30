@@ -5,8 +5,12 @@
 
 use Symfony\Component\DependencyInjection\Dumper\Preloader;
 
+if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
+    return;
+}
+
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerAYe1gNu/App_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerXLgyLmY/App_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -24,6 +28,7 @@ $classes[] = 'App\Controller\BlogController';
 $classes[] = 'App\Controller\LoginController';
 $classes[] = 'App\Repository\AuthorRepository';
 $classes[] = 'App\Repository\BlogPostRepository';
+$classes[] = 'Doctrine\DBAL\Tools\Console\Command\RunSqlCommand';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
 $classes[] = 'Symfony\Component\Cache\DoctrineProvider';
@@ -116,6 +121,7 @@ $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\EnsureProductionSetti
 $classes[] = 'Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader';
 $classes[] = 'App\DataFixtures\AppFixtures';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ConvertMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\ImportMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\InfoDoctrineCommand';
@@ -170,6 +176,7 @@ $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeCommand';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeController';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeCrud';
+$classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeEntity';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeFixtures';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeForm';
@@ -197,6 +204,7 @@ $classes[] = 'Symfony\Bundle\MakerBundle\Util\AutoloaderUtil';
 $classes[] = 'Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder';
 $classes[] = 'Symfony\Bundle\MakerBundle\Util\MakerFileLinkFormatter';
 $classes[] = 'Symfony\Bundle\MakerBundle\Generator';
+$classes[] = 'Symfony\Bundle\MakerBundle\Util\PhpCompatUtil';
 $classes[] = 'Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer';
 $classes[] = 'Symfony\Bundle\MakerBundle\Security\SecurityConfigUpdater';
 $classes[] = 'Symfony\Component\DependencyInjection\ParameterBag\ContainerBag';

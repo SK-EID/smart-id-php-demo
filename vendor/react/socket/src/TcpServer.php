@@ -113,6 +113,7 @@ final class TcpServer extends EventEmitter implements ServerInterface
      * their defaults and effects of changing these may vary depending on your system
      * and/or PHP version.
      * Passing unknown context options has no effect.
+     * The `backlog` context option defaults to `511` unless given explicitly.
      *
      * @param string|int    $uri
      * @param LoopInterface $loop
@@ -158,7 +159,7 @@ final class TcpServer extends EventEmitter implements ServerInterface
             $errno,
             $errstr,
             \STREAM_SERVER_BIND | \STREAM_SERVER_LISTEN,
-            \stream_context_create(array('socket' => $context))
+            \stream_context_create(array('socket' => $context + array('backlog' => 511)))
         );
         if (false === $this->master) {
             throw new \RuntimeException('Failed to listen on "' . $uri . '": ' . $errstr, $errno);
@@ -179,8 +180,7 @@ final class TcpServer extends EventEmitter implements ServerInterface
         // check if this is an IPv6 address which includes multiple colons but no square brackets
         $pos = \strrpos($address, ':');
         if ($pos !== false && \strpos($address, ':') < $pos && \substr($address, 0, 1) !== '[') {
-            $port = \substr($address, $pos + 1);
-            $address = '[' . \substr($address, 0, $pos) . ']:' . $port;
+            $address = '[' . \substr($address, 0, $pos) . ']:' . \substr($address, $pos + 1); // @codeCoverageIgnore
         }
 
         return 'tcp://' . $address;
@@ -204,7 +204,7 @@ final class TcpServer extends EventEmitter implements ServerInterface
 
         $that = $this;
         $this->loop->addReadStream($this->master, function ($master) use ($that) {
-            $newSocket = @\stream_socket_accept($master);
+            $newSocket = @\stream_socket_accept($master, 0);
             if (false === $newSocket) {
                 $that->emit('error', array(new \RuntimeException('Error accepting new connection')));
 

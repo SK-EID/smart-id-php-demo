@@ -48,13 +48,27 @@ EOT
         if (empty($connectionName)) {
             $connectionName = $this->getDoctrine()->getDefaultConnectionName();
         }
+
         $connection = $this->getDoctrineConnection($connectionName);
 
         $ifNotExists = $input->getOption('if-not-exists');
 
-        $params = $connection->getParams();
+        $driverOptions = [];
+        $params        = $connection->getParams();
+
+        if (isset($params['driverOptions'])) {
+            $driverOptions = $params['driverOptions'];
+        }
+
         if (isset($params['master'])) {
-            $params = $params['master'];
+            $params                  = $params['master'];
+            $params['driverOptions'] = $driverOptions;
+        }
+
+        // Since doctrine/dbal 2.11 master has been replaced by primary
+        if (isset($params['primary'])) {
+            $params                  = $params['primary'];
+            $params['driverOptions'] = $driverOptions;
         }
 
         // Cannot inject `shard` option in parent::getDoctrineConnection
@@ -81,6 +95,7 @@ EOT
         if (! $name) {
             throw new InvalidArgumentException("Connection does not contain a 'path' or 'dbname' parameter and cannot be created.");
         }
+
         // Need to get rid of _every_ occurrence of dbname from connection configuration and we have already extracted all relevant info from url
         unset($params['dbname'], $params['path'], $params['url']);
 

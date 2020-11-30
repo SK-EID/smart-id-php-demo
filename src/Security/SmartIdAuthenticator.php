@@ -13,7 +13,9 @@ use Psr\Log\LoggerInterface;
 use Sk\SmartId\Api\AuthenticationResponseValidator;
 use Sk\SmartId\Api\Data\AuthenticationHash;
 use Sk\SmartId\Api\Data\CertificateLevelCode;
-use Sk\SmartId\Api\Data\NationalIdentity;
+use Sk\SmartId\Api\Data\Interaction;
+use Sk\SmartId\Api\Data\SemanticsIdentifierBuilder;
+use Sk\SmartId\Api\Data\SemanticsIdentifierTypes;
 use Sk\SmartId\Client;
 use Sk\SmartId\Exception\InvalidParametersException;
 use Sk\SmartId\Exception\SessionTimeoutException;
@@ -61,8 +63,8 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
         $this->smartIdClient
             ->setRelyingPartyUUID( '00000000-0000-0000-0000-000000000000' )
             ->setRelyingPartyName( 'DEMO' )
-            ->setHostUrl( 'https://sid.demo.sk.ee/smart-id-rp/v1/' ) //setting endpoint
-            ->useOnlyDemoPublicKey(); //->useOnlyLivePublicKey(); use this in case smart id live environment
+            ->setHostUrl( 'https://sid.demo.sk.ee/smart-id-rp/v2/' ); //setting endpoint
+            //->useOnlyDemoPublicKey(); //->useOnlyLivePublicKey(); use this in case smart id live environment
     }
 
 
@@ -121,18 +123,31 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
         $session = $credentials["session"];
         $country = $credentials["country"];
 
-        $identity = new NationalIdentity( $country, $nationalIdentityNumber);
+        $identityBuilder = new SemanticsIdentifierBuilder();
+        $identityBuilder
+            ->withsemanticsIdentifierType(SemanticsIdentifierTypes::PNO)
+            ->withCountryCode(strtoupper($country))
+            ->withIdentifier($nationalIdentityNumber);
+
+        $identity = $identityBuilder->build();
 
         //sleep so in case when user logs in from smart device, he/she can see the verification code on the webpage before the smart id application comes up
 
         sleep(2);
 
+        $authenticationResponse = null;
+
         try
         {
             $authenticationResponse = $this->smartIdClient->authentication()
                 ->createAuthentication()
-                ->withNationalIdentity( $identity ) // or with document number: ->withDocumentNumber( 'PNOEE-10101010005-Z1B2-Q' )
+                ->withSemanticsIdentifier( $identity ) // or with document number: ->withDocumentNumber( 'PNOEE-10101010005-Z1B2-Q' )
                 ->withAuthenticationHash( $authenticationHash )
+                ->withAllowedInteractionsOrder(array(
+                    Interaction::ofTypeConfirmationMessageAndVerificationCodeChoice("dsdfsfasd"),
+                    Interaction::ofTypeConfirmationMessage("Confirmation message with length up to 200"),
+                    Interaction::ofTypeDisplayTextAndPIN("Text and pin"),
+                ))
                 ->withCertificateLevel( CertificateLevelCode::QUALIFIED ) // Certificate level can either be "QUALIFIED" or "ADVANCED"
                 ->authenticate();
 
@@ -143,7 +158,7 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
             throw new AuthenticationException("Smart id login failed");
         }
         catch (UserAccountNotFoundException $e) {
-            $session->set("error", "You tried to sign in with national identity \"".$nationalIdentityNumber."\" and country \"".$country."\", but no such user excists in smart-id");
+            $session->set("error", "You tried to sign in with national identity \"".$nationalIdentityNumber."\" and country \"".$country."\", but no such user exists in smart-id");
             throw new AuthenticationException("Smart id login failed");
         }
         catch (SessionTimeoutException $e) {
@@ -152,12 +167,13 @@ class SmartIdAuthenticator extends AbstractGuardAuthenticator
         }
         catch (InvalidParametersException $e) {
             $session->set("error", "You entered invalid credentials");
+            throw new AuthenticationException("Smart id login failed");
         }
         catch (TechnicalErrorException $e) {
             $session->set("error", "There was a technical error while trying to sign in");
+            throw new AuthenticationException("Smart id login failed");
         }
         catch (SmartIdException $e) {
-            $this->logger->error("smart id exception", $e->getTrace());
             $session->set("error", "Smart id login failed for unknown reason");
             throw new AuthenticationException("Smart id login failed");
         }

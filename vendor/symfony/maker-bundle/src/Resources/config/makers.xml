@@ -30,6 +30,11 @@
                 <tag name="maker.command" />
             </service>
 
+            <service id="maker.maker.make_docker_database" class="Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase">
+                <argument type="service" id="maker.file_manager" />
+                <tag name="maker.command" />
+            </service>
+
             <service id="maker.maker.make_entity" class="Symfony\Bundle\MakerBundle\Maker\MakeEntity">
                 <argument type="service" id="maker.file_manager" />
                 <argument type="service" id="maker.doctrine_helper" />
@@ -71,6 +76,8 @@
 
             <service id="maker.maker.make_reset_password" class="Symfony\Bundle\MakerBundle\Maker\MakeResetPassword">
                 <argument type="service" id="maker.file_manager" />
+                <argument type="service" id="maker.doctrine_helper" />
+                <argument type="service" id="maker.entity_class_generator" />
                 <tag name="maker.command" />
             </service>
 

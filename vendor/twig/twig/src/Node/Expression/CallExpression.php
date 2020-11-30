@@ -112,7 +112,7 @@ abstract class CallExpression extends AbstractExpression
         $compiler->raw($isArray ? ']' : ')');
     }
 
-    protected function getArguments($callable = null, $arguments)
+    protected function getArguments($callable, $arguments)
     {
         $callType = $this->getAttribute('type');
         $callName = $this->getAttribute('name');
@@ -152,7 +152,16 @@ abstract class CallExpression extends AbstractExpression
         $optionalArguments = [];
         $pos = 0;
         foreach ($callableParameters as $callableParameter) {
-            $names[] = $name = $this->normalizeName($callableParameter->name);
+            $name = $this->normalizeName($callableParameter->name);
+            if (\PHP_VERSION_ID >= 80000 && 'range' === $callable) {
+                if ('start' === $name) {
+                    $name = 'low';
+                } elseif ('end' === $name) {
+                    $name = 'high';
+                }
+            }
+
+            $names[] = $name;
 
             if (\array_key_exists($name, $parameters)) {
                 if (\array_key_exists($pos, $parameters)) {
@@ -258,7 +267,8 @@ abstract class CallExpression extends AbstractExpression
         $isPhpVariadic = false;
         if ($isVariadic) {
             $argument = end($parameters);
-            if ($argument && $argument->isArray() && $argument->isDefaultValueAvailable() && [] === $argument->getDefaultValue()) {
+            $isArray = $argument && $argument->hasType() && 'array' === $argument->getType()->getName();
+            if ($isArray && $argument->isDefaultValueAvailable() && [] === $argument->getDefaultValue()) {
                 array_pop($parameters);
             } elseif ($argument && $argument->isVariadic()) {
                 array_pop($parameters);

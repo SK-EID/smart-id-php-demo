@@ -13,6 +13,7 @@ namespace Symfony\Flex;
 
 use Composer\Cache as BaseCache;
 use Composer\IO\IOInterface;
+use Composer\Package\RootPackageInterface;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
 
@@ -24,17 +25,22 @@ class Cache extends BaseCache
     private $versions;
     private $versionParser;
     private $symfonyRequire;
+    private $rootConstraints = [];
     private $symfonyConstraints;
     private $downloader;
     private $io;
 
-    public function setSymfonyRequire(string $symfonyRequire, Downloader $downloader, IOInterface $io = null)
+    public function setSymfonyRequire(string $symfonyRequire, RootPackageInterface $rootPackage, Downloader $downloader, IOInterface $io = null)
     {
         $this->versionParser = new VersionParser();
         $this->symfonyRequire = $symfonyRequire;
         $this->symfonyConstraints = $this->versionParser->parseConstraints($symfonyRequire);
         $this->downloader = $downloader;
         $this->io = $io;
+
+        foreach ($rootPackage->getRequires() + $rootPackage->getDevRequires() as $name => $link) {
+            $this->rootConstraints[$name] = $link->getConstraint();
+        }
     }
 
     public function read($file)
@@ -59,26 +65,33 @@ class Cache extends BaseCache
                 continue;
             }
 
-            foreach ($versions as $version => $composerJson) {
-                if ('dev-master' === $version) {
-                    if (null === $devMasterAlias = $versions['dev-master']['extra']['branch-alias']['dev-master'] ?? null) {
-                        continue;
-                    }
+            $rootConstraint = $this->rootConstraints[$name] ?? null;
+            $rootVersions = [];
 
-                    $normalizedVersion = $this->versionParser->normalize($devMasterAlias);
-                } elseif (!isset($composerJson['version_normalized'])) {
+            foreach ($versions as $version => $composerJson) {
+                if (null !== $alias = $composerJson['extra']['branch-alias'][$version] ?? null) {
+                    $normalizedVersion = $this->versionParser->normalize($alias);
+                } elseif (null === $normalizedVersion = $composerJson['version_normalized'] ?? null) {
                     continue;
-                } else {
-                    $normalizedVersion = $composerJson['version_normalized'];
                 }
 
-                if (!$this->symfonyConstraints->matches(new Constraint('==', $normalizedVersion))) {
+                $constraint = new Constraint('==', $normalizedVersion);
+
+                if ($rootConstraint && $rootConstraint->matches($constraint)) {
+                    $rootVersions[$version] = $composerJson;
+                }
+
+                if (!$this->symfonyConstraints->matches($constraint)) {
                     if (null !== $this->io) {
                         $this->io->writeError(sprintf('<info>Restricting packages listed in "symfony/symfony" to "%s"</>', $this->symfonyRequire));
                         $this->io = null;
                     }
                     unset($versions[$version]);
                 }
+            }
+
+            if ($rootConstraint && !array_intersect_key($rootVersions, $versions)) {
+                $versions = $rootVersions;
             }
 
             $data['packages'][$name] = $versions;
@@ -89,12 +102,10 @@ class Cache extends BaseCache
         }
 
         foreach ($symfonySymfony as $version => $composerJson) {
-            if ('dev-master' === $version) {
-                $normalizedVersion = $this->versionParser->normalize($composerJson['extra']['branch-alias']['dev-master']);
-            } elseif (!isset($composerJson['version_normalized'])) {
+            if (null !== $alias = $composerJson['extra']['branch-alias'][$version] ?? null) {
+                $normalizedVersion = $this->versionParser->normalize($alias);
+            } elseif (null === $normalizedVersion = $composerJson['version_normalized'] ?? null) {
                 continue;
-            } else {
-                $normalizedVersion = $composerJson['version_normalized'];
             }
 
             if (!$this->symfonyConstraints->matches(new Constraint('==', $normalizedVersion))) {

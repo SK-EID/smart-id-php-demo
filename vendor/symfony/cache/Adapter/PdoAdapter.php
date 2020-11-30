@@ -11,8 +11,10 @@
 
 namespace Symfony\Component\Cache\Adapter;
 
+use Doctrine\DBAL\Abstraction\Result;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Result as DriverResult;
 use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception\TableNotFoundException;
@@ -135,7 +137,11 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
             $table->setPrimaryKey([$this->idCol]);
 
             foreach ($schema->toSql($conn->getDatabasePlatform()) as $sql) {
-                $conn->exec($sql);
+                if (method_exists($conn, 'executeStatement')) {
+                    $conn->executeStatement($sql);
+                } else {
+                    $conn->exec($sql);
+                }
             }
 
             return;
@@ -166,7 +172,11 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
                 throw new \DomainException(sprintf('Creating the cache table is currently not implemented for PDO driver "%s".', $this->driver));
         }
 
-        $conn->exec($sql);
+        if (method_exists($conn, 'executeStatement')) {
+            $conn->executeStatement($sql);
+        } else {
+            $conn->exec($sql);
+        }
     }
 
     /**
@@ -216,9 +226,16 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
         foreach ($ids as $id) {
             $stmt->bindValue(++$i, $id);
         }
-        $stmt->execute();
+        $result = $stmt->execute();
 
-        while ($row = $stmt->fetch(\PDO::FETCH_NUM)) {
+        if ($result instanceof Result) {
+            $result = $result->iterateNumeric();
+        } else {
+            $stmt->setFetchMode(\PDO::FETCH_NUM);
+            $result = $stmt;
+        }
+
+        foreach ($result as $row) {
             if (null === $row[1]) {
                 $expired[] = $row[0];
             } else {
@@ -248,9 +265,9 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
 
         $stmt->bindValue(':id', $id);
         $stmt->bindValue(':time', time(), \PDO::PARAM_INT);
-        $stmt->execute();
+        $result = $stmt->execute();
 
-        return (bool) $stmt->fetchColumn();
+        return (bool) ($result instanceof DriverResult ? $result->fetchOne() : $stmt->fetchColumn());
     }
 
     /**
@@ -271,7 +288,11 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
         }
 
         try {
-            $conn->exec($sql);
+            if (method_exists($conn, 'executeStatement')) {
+                $conn->executeStatement($sql);
+            } else {
+                $conn->exec($sql);
+            }
         } catch (TableNotFoundException $e) {
         } catch (\PDOException $e) {
         }
@@ -380,19 +401,19 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
 
         foreach ($values as $id => $data) {
             try {
-                $stmt->execute();
+                $result = $stmt->execute();
             } catch (TableNotFoundException $e) {
                 if (!$conn->isTransactionActive() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
                     $this->createTable();
                 }
-                $stmt->execute();
+                $result = $stmt->execute();
             } catch (\PDOException $e) {
                 if (!$conn->inTransaction() || \in_array($this->driver, ['pgsql', 'sqlite', 'sqlsrv'], true)) {
                     $this->createTable();
                 }
-                $stmt->execute();
+                $result = $stmt->execute();
             }
-            if (null === $driver && !$stmt->rowCount()) {
+            if (null === $driver && !($result instanceof DriverResult ? $result : $stmt)->rowCount()) {
                 try {
                     $insertStmt->execute();
                 } catch (DBALException $e) {
@@ -425,25 +446,35 @@ class PdoAdapter extends AbstractAdapter implements PruneableInterface
             if ($this->conn instanceof \PDO) {
                 $this->driver = $this->conn->getAttribute(\PDO::ATTR_DRIVER_NAME);
             } else {
-                switch ($this->driver = $this->conn->getDriver()->getName()) {
-                    case 'mysqli':
+                $driver = $this->conn->getDriver();
+
+                switch (true) {
+                    case $driver instanceof \Doctrine\DBAL\Driver\Mysqli\Driver:
                         throw new \LogicException(sprintf('The adapter "%s" does not support the mysqli driver, use pdo_mysql instead.', static::class));
-                    case 'pdo_mysql':
-                    case 'drizzle_pdo_mysql':
+
+                    case $driver instanceof \Doctrine\DBAL\Driver\AbstractMySQLDriver:
                         $this->driver = 'mysql';
                         break;
-                    case 'pdo_sqlite':
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDOSqlite\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDO\SQLite\Driver:
                         $this->driver = 'sqlite';
                         break;
-                    case 'pdo_pgsql':
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDOPgSql\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDO\PgSQL\Driver:
                         $this->driver = 'pgsql';
                         break;
-                    case 'oci8':
-                    case 'pdo_oracle':
+                    case $driver instanceof \Doctrine\DBAL\Driver\OCI8\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDOOracle\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDO\OCI\Driver:
                         $this->driver = 'oci';
                         break;
-                    case 'pdo_sqlsrv':
+                    case $driver instanceof \Doctrine\DBAL\Driver\SQLSrv\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDOSqlsrv\Driver:
+                    case $driver instanceof \Doctrine\DBAL\Driver\PDO\SQLSrv\Driver:
                         $this->driver = 'sqlsrv';
+                        break;
+                    default:
+                        $this->driver = \get_class($driver);
                         break;
                 }
             }

@@ -8,15 +8,18 @@ use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\EntityListenerPa
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\ServiceRepositoryCompilerPass;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\WellKnownSchemaFilterPass;
 use Doctrine\Common\Util\ClassUtils;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Proxy\Autoloader;
 use Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\DoctrineValidationPass;
 use Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\RegisterEventListenersAndSubscribersPass;
+use Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\RegisterUidTypePass;
 use Symfony\Bridge\Doctrine\DependencyInjection\Security\UserProvider\EntityFactory;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use function assert;
 
 class DoctrineBundle extends Bundle
 {
@@ -41,7 +44,13 @@ class DoctrineBundle extends Bundle
         $container->addCompilerPass(new ServiceRepositoryCompilerPass());
         $container->addCompilerPass(new WellKnownSchemaFilterPass());
         $container->addCompilerPass(new DbalSchemaFilterPass());
-        $container->addCompilerPass(new CacheSchemaSubscriberPass(), PassConfig::TYPE_OPTIMIZE, -10);
+        $container->addCompilerPass(new CacheSchemaSubscriberPass(), PassConfig::TYPE_BEFORE_REMOVING, -10);
+
+        if (! class_exists(RegisterUidTypePass::class)) {
+            return;
+        }
+
+        $container->addCompilerPass(new RegisterUidTypePass());
     }
 
     /**
@@ -63,14 +72,13 @@ class DoctrineBundle extends Bundle
             // See https://github.com/symfony/symfony/pull/3419 for usage of references
             $container = &$this->container;
 
-            $proxyGenerator = static function ($proxyDir, $proxyNamespace, $class) use (&$container) {
+            $proxyGenerator = static function ($proxyDir, $proxyNamespace, $class) use (&$container): void {
                 $originalClassName = ClassUtils::getRealClass($class);
-                /** @var Registry $registry */
-                $registry = $container->get('doctrine');
+                $registry          = $container->get('doctrine');
+                assert($registry instanceof Registry);
 
-                // Tries to auto-generate the proxy file
-                /** @var EntityManager $em */
                 foreach ($registry->getManagers() as $em) {
+                    assert($em instanceof EntityManagerInterface);
                     if (! $em->getConfiguration()->getAutoGenerateProxyClasses()) {
                         continue;
                     }

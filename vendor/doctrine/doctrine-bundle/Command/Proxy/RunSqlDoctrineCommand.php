@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Execute a SQL query and output the results.
+ *
+ * @deprecated use Doctrine\DBAL\Tools\Console\Command\RunSqlCommand instead
  */
 class RunSqlDoctrineCommand extends RunSqlCommand
 {
@@ -41,7 +43,13 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        @trigger_error(sprintf('The "%s" (doctrine:query:sql) is deprecated, use dbal:run-sql command instead.', self::class), E_USER_DEPRECATED);
+
         DoctrineCommandHelper::setApplicationConnection($this->getApplication(), $input->getOption('connection'));
+
+        // compatibility with doctrine/dbal 2.11+
+        // where this option is also present and unsupported before we are not switching to use a ConnectionProvider
+        $input->setOption('connection', null);
 
         return parent::execute($input, $output);
     }

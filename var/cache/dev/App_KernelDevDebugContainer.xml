@@ -64,6 +64,35 @@
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="container.dumper.inline_factories">true</parameter>
+    <parameter key="event_dispatcher.event_aliases" type="collection">
+      <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
+      <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
+      <parameter key="Symfony\Component\Console\Event\ConsoleTerminateEvent">console.terminate</parameter>
+      <parameter key="Symfony\Component\Form\Event\PreSubmitEvent">form.pre_submit</parameter>
+      <parameter key="Symfony\Component\Form\Event\SubmitEvent">form.submit</parameter>
+      <parameter key="Symfony\Component\Form\Event\PostSubmitEvent">form.post_submit</parameter>
+      <parameter key="Symfony\Component\Form\Event\PreSetDataEvent">form.pre_set_data</parameter>
+      <parameter key="Symfony\Component\Form\Event\PostSetDataEvent">form.post_set_data</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent">kernel.controller_arguments</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\ControllerEvent">kernel.controller</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\ResponseEvent">kernel.response</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\FinishRequestEvent">kernel.finish_request</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\RequestEvent">kernel.request</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\ViewEvent">kernel.view</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\ExceptionEvent">kernel.exception</parameter>
+      <parameter key="Symfony\Component\HttpKernel\Event\TerminateEvent">kernel.terminate</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\GuardEvent">workflow.guard</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\LeaveEvent">workflow.leave</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\TransitionEvent">workflow.transition</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\EnterEvent">workflow.enter</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\EnteredEvent">workflow.entered</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\CompletedEvent">workflow.completed</parameter>
+      <parameter key="Symfony\Component\Workflow\Event\AnnounceEvent">workflow.announce</parameter>
+      <parameter key="Symfony\Component\Security\Core\Event\AuthenticationSuccessEvent">security.authentication.success</parameter>
+      <parameter key="Symfony\Component\Security\Core\Event\AuthenticationFailureEvent">security.authentication.failure</parameter>
+      <parameter key="Symfony\Component\Security\Http\Event\InteractiveLoginEvent">security.interactive_login</parameter>
+      <parameter key="Symfony\Component\Security\Http\Event\SwitchUserEvent">security.switch_user</parameter>
+    </parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
@@ -84,7 +113,6 @@
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="asset.request_context.base_path"></parameter>
     <parameter key="asset.request_context.secure">false</parameter>
-    <parameter key="validator.mapping.cache.prefix"></parameter>
     <parameter key="validator.mapping.cache.file">/home/andreas/spaces/SK/smart-id-php-demo/var/cache/dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="data_collector.templates" type="collection"/>
@@ -165,12 +193,13 @@
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="doctrine_migrations.dir_name">/home/andreas/spaces/SK/smart-id-php-demo/src/Migrations</parameter>
     <parameter key="doctrine_migrations.namespace">DoctrineMigrations</parameter>
+    <parameter key="doctrine_migrations.name">Application Migrations</parameter>
+    <parameter key="doctrine_migrations.migrations_paths" type="collection"/>
     <parameter key="doctrine_migrations.table_name">migration_versions</parameter>
     <parameter key="doctrine_migrations.column_name">version</parameter>
     <parameter key="doctrine_migrations.column_length">14</parameter>
     <parameter key="doctrine_migrations.executed_at_column_name">executed_at</parameter>
     <parameter key="doctrine_migrations.all_or_nothing">false</parameter>
-    <parameter key="doctrine_migrations.name">Application Migrations</parameter>
     <parameter key="doctrine_migrations.custom_template">null</parameter>
     <parameter key="doctrine_migrations.organize_migrations">false</parameter>
     <parameter key="twig.form.resources" type="collection">
@@ -1547,6 +1576,13 @@
         <argument>doctrine:query:sql</argument>
       </call>
     </service>
+    <service id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" class="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand">
+      <tag name="console.command" command="dbal:run-sql"/>
+      <argument>null</argument>
+      <call method="setName">
+        <argument>dbal:run-sql</argument>
+      </call>
+    </service>
     <service id="doctrine.dbal.default_connection.configuration" class="Doctrine\DBAL\Configuration" public="false">
       <call method="setSQLLogger">
         <argument type="service" id="doctrine.dbal.logger.chain.default"/>
@@ -2211,6 +2247,7 @@
     <service id="maker.generator" class="Symfony\Bundle\MakerBundle\Generator" public="false">
       <argument type="service" id="maker.file_manager"/>
       <argument>App</argument>
+      <argument type="service" id="maker.php_compat_util"/>
     </service>
     <service id="maker.entity_class_generator" class="Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator" public="false">
       <argument type="service" id="maker.generator"/>
@@ -2223,6 +2260,9 @@
     <service id="maker.security_config_updater" class="Symfony\Bundle\MakerBundle\Security\SecurityConfigUpdater" public="false"/>
     <service id="maker.renderer.form_type_renderer" class="Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer" public="false">
       <argument type="service" id="maker.generator"/>
+    </service>
+    <service id="maker.php_compat_util" class="Symfony\Bundle\MakerBundle\Util\PhpCompatUtil" public="false">
+      <argument type="service" id="maker.file_manager"/>
     </service>
     <service id="maker.maker.make_authenticator" class="Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator" public="false">
       <tag name="maker.command"/>
@@ -2242,6 +2282,10 @@
       <tag name="maker.command"/>
       <argument type="service" id="maker.doctrine_helper"/>
       <argument type="service" id="maker.renderer.form_type_renderer"/>
+    </service>
+    <service id="maker.maker.make_docker_database" class="Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
     </service>
     <service id="maker.maker.make_entity" class="Symfony\Bundle\MakerBundle\Maker\MakeEntity" public="false">
       <tag name="maker.command"/>
@@ -2278,6 +2322,8 @@
     <service id="maker.maker.make_reset_password" class="Symfony\Bundle\MakerBundle\Maker\MakeResetPassword" public="false">
       <tag name="maker.command"/>
       <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument type="service" id="maker.entity_class_generator"/>
     </service>
     <service id="maker.maker.make_serializer_encoder" class="Symfony\Bundle\MakerBundle\Maker\MakeSerializerEncoder" public="false">
       <tag name="maker.command"/>
@@ -2317,6 +2363,9 @@
       <tag name="console.command" command="doctrine:fixtures:load"/>
       <argument type="service" id="doctrine.fixtures.loader"/>
       <argument type="service" id="doctrine"/>
+      <argument type="collection">
+        <argument key="default" type="service" id="doctrine.fixtures.purger.orm_purger_factory"/>
+      </argument>
       <call method="setName">
         <argument>doctrine:fixtures:load</argument>
       </call>
@@ -2331,6 +2380,9 @@
           </argument>
         </argument>
       </call>
+    </service>
+    <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory" public="false">
+      <tag name="doctrine.fixtures.purger_factory" alias="default"/>
     </service>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker" public="true">
       <argument type="service" id="security.token_storage"/>
@@ -3034,6 +3086,15 @@
         <argument>make:crud</argument>
       </call>
     </service>
+    <service id="maker.auto_command.make_docker_database" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false">
+      <tag name="console.command" command="make:docker:database"/>
+      <argument type="service" id="maker.maker.make_docker_database"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.generator"/>
+      <call method="setName">
+        <argument>make:docker:database</argument>
+      </call>
+    </service>
     <service id="maker.auto_command.make_entity" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false">
       <tag name="console.command" command="make:entity"/>
       <argument type="service" id="maker.maker.make_entity"/>
@@ -3443,7 +3504,7 @@
       <argument type="service" id=".service_locator.U19DvOP"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id=".service_locator.sBKsfCL"/>
+      <argument type="service" id=".service_locator..9toT_4"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -3472,6 +3533,7 @@
         <argument key="doctrine:database:drop">doctrine.database_drop_command</argument>
         <argument key="doctrine:database:import">doctrine.database_import_command</argument>
         <argument key="doctrine:query:sql">doctrine.query_sql_command</argument>
+        <argument key="dbal:run-sql">Doctrine\DBAL\Tools\Console\Command\RunSqlCommand</argument>
         <argument key="doctrine:cache:clear-metadata">doctrine.cache_clear_metadata_command</argument>
         <argument key="doctrine:cache:clear-query">doctrine.cache_clear_query_cache_command</argument>
         <argument key="doctrine:cache:clear-result">doctrine.cache_clear_result_command</argument>
@@ -3505,6 +3567,7 @@
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
         <argument key="make:crud">maker.auto_command.make_crud</argument>
+        <argument key="make:docker:database">maker.auto_command.make_docker_database</argument>
         <argument key="make:entity">maker.auto_command.make_entity</argument>
         <argument key="make:fixtures">maker.auto_command.make_fixtures</argument>
         <argument key="make:form">maker.auto_command.make_form</argument>
@@ -3524,9 +3587,10 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.sBKsfCL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator..9toT_4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
         <argument key="console.command.about" type="service" id="console.command.about"/>
         <argument key="console.command.assets_install" type="service" id="console.command.assets_install"/>
         <argument key="console.command.cache_clear" type="service" id="console.command.cache_clear"/>
@@ -3584,6 +3648,7 @@
         <argument key="maker.auto_command.make_command" type="service" id="maker.auto_command.make_command"/>
         <argument key="maker.auto_command.make_controller" type="service" id="maker.auto_command.make_controller"/>
         <argument key="maker.auto_command.make_crud" type="service" id="maker.auto_command.make_crud"/>
+        <argument key="maker.auto_command.make_docker_database" type="service" id="maker.auto_command.make_docker_database"/>
         <argument key="maker.auto_command.make_entity" type="service" id="maker.auto_command.make_entity"/>
         <argument key="maker.auto_command.make_fixtures" type="service" id="maker.auto_command.make_fixtures"/>
         <argument key="maker.auto_command.make_form" type="service" id="maker.auto_command.make_form"/>
@@ -3641,10 +3706,11 @@
     <service id="cache.default_pdo_provider" alias="doctrine.dbal.default_connection" public="false"/>
     <service id="Symfony\Component\HttpFoundation\Session\SessionInterface" alias="session" public="false"/>
     <service id="Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface" alias="session.storage.native" public="false"/>
-    <service id="SessionHandlerInterface" alias="session.handler" public="false"/>
+    <service id="SessionHandlerInterface" alias="session.handler.native_file" public="false"/>
     <service id="Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface" alias="session.flash_bag" public="false"/>
     <service id="session.storage.filesystem" alias="session.storage.mock_file" public="false"/>
     <service id="session.storage" alias="session.storage.native"/>
+    <service id="session.handler" alias="session.handler.native_file"/>
     <service id="Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface" alias="security.csrf.token_generator" public="false"/>
     <service id="Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface" alias="security.csrf.token_storage" public="false"/>
     <service id="Symfony\Component\Security\Csrf\CsrfTokenManagerInterface" alias="security.csrf.token_manager" public="false"/>

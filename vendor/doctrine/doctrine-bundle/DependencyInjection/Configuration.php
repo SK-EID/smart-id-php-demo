@@ -10,7 +10,9 @@ use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
+
 use function array_key_exists;
+use function assert;
 use function in_array;
 use function is_array;
 
@@ -28,15 +30,12 @@ class Configuration implements ConfigurationInterface
     /**
      * @param bool $debug Whether to use the debug mode
      */
-    public function __construct($debug)
+    public function __construct(bool $debug)
     {
         $this->debug = (bool) $debug;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getConfigTreeBuilder() : TreeBuilder
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('doctrine');
         $rootNode    = $treeBuilder->getRootNode();
@@ -50,7 +49,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Add DBAL section to configuration tree
      */
-    private function addDbalSection(ArrayNodeDefinition $node) : void
+    private function addDbalSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
@@ -67,9 +66,11 @@ class Configuration implements ConfigurationInterface
                             if (isset($excludedKeys[$key])) {
                                 continue;
                             }
+
                             $connection[$key] = $v[$key];
                             unset($v[$key]);
                         }
+
                         $v['default_connection'] = isset($v['default_connection']) ? (string) $v['default_connection'] : 'default';
                         $v['connections']        = [$v['default_connection'] => $connection];
 
@@ -92,7 +93,11 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->children()
                                 ->scalarNode('class')->isRequired()->end()
-                                ->booleanNode('commented')->setDeprecated(...$this->getCommentedParamDeprecationMsg())->end()
+                                ->booleanNode('commented')
+                                    ->setDeprecated(
+                                        ...$this->getDeprecationMsg('The doctrine-bundle type commenting features were removed; the corresponding config parameter was deprecated in 2.0 and will be dropped in 3.0.', '2.0')
+                                    )
+                                ->end()
                             ->end()
                         ->end()
                     ->end()
@@ -105,16 +110,16 @@ class Configuration implements ConfigurationInterface
     /**
      * Return the dbal connections node
      */
-    private function getDbalConnectionsNode() : ArrayNodeDefinition
+    private function getDbalConnectionsNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('connections');
         $node        = $treeBuilder->getRootNode();
 
-        /** @var ArrayNodeDefinition $connectionNode */
         $connectionNode = $node
             ->requiresAtLeastOneElement()
             ->useAttributeAsKey('name')
             ->prototype('array');
+        assert($connectionNode instanceof ArrayNodeDefinition);
 
         $this->configureDbalDriverNode($connectionNode);
 
@@ -122,6 +127,7 @@ class Configuration implements ConfigurationInterface
             ->fixXmlConfig('option')
             ->fixXmlConfig('mapping_type')
             ->fixXmlConfig('slave')
+            ->fixXmlConfig('replica')
             ->fixXmlConfig('shard')
             ->fixXmlConfig('default_table_option')
             ->children()
@@ -145,7 +151,12 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('shard_manager_class')->end()
                 ->scalarNode('shard_choser')->end()
                 ->scalarNode('shard_choser_service')->end()
-                ->booleanNode('keep_slave')->end()
+                ->booleanNode('keep_slave')
+                    ->setDeprecated(
+                        ...$this->getDeprecationMsg('The "keep_slave" configuration key is deprecated since doctrine-bundle 2.2. Use the "keep_replica" configuration key instead.', '2.2')
+                    )
+                ->end()
+                ->booleanNode('keep_replica')->end()
                 ->arrayNode('options')
                     ->useAttributeAsKey('key')
                     ->prototype('variable')->end()
@@ -161,12 +172,24 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
 
+        // dbal < 2.11
         $slaveNode = $connectionNode
             ->children()
                 ->arrayNode('slaves')
+                    ->setDeprecated(
+                        ...$this->getDeprecationMsg('The "slaves" configuration key will be renamed to "replicas" in doctrine-bundle 3.0. "slaves" is deprecated since doctrine-bundle 2.2.', '2.2')
+                    )
                     ->useAttributeAsKey('name')
                     ->prototype('array');
         $this->configureDbalDriverNode($slaveNode);
+
+        // dbal >= 2.11
+        $replicaNode = $connectionNode
+            ->children()
+                ->arrayNode('replicas')
+                    ->useAttributeAsKey('name')
+                    ->prototype('array');
+        $this->configureDbalDriverNode($replicaNode);
 
         $shardNode = $connectionNode
             ->children()
@@ -186,9 +209,9 @@ class Configuration implements ConfigurationInterface
     /**
      * Adds config keys related to params processed by the DBAL drivers
      *
-     * These keys are available for slave configurations too.
+     * These keys are available for replica configurations too.
      */
-    private function configureDbalDriverNode(ArrayNodeDefinition $node) : void
+    private function configureDbalDriverNode(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
@@ -298,7 +321,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Add the ORM section to configuration tree
      */
-    private function addOrmSection(ArrayNodeDefinition $node) : void
+    private function addOrmSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
@@ -327,9 +350,11 @@ class Configuration implements ConfigurationInterface
                                 if (isset($excludedKeys[$key])) {
                                     continue;
                                 }
+
                                 $entityManager[$key] = $v[$key];
                                 unset($v[$key]);
                             }
+
                             $v['default_entity_manager'] = isset($v['default_entity_manager']) ? (string) $v['default_entity_manager'] : 'default';
                             $v['entity_managers']        = [$v['default_entity_manager'] => $entityManager];
 
@@ -347,9 +372,11 @@ class Configuration implements ConfigurationInterface
                                     if (is_int($v) && in_array($v, $generationModes['values']/*array(0, 1, 2, 3)*/)) {
                                         return false;
                                     }
+
                                     if (is_bool($v)) {
                                         return false;
                                     }
+
                                     if (is_string($v)) {
                                         if (in_array(strtoupper($v), $generationModes['names']/*array('NEVER', 'ALWAYS', 'FILE_NOT_EXISTS', 'EVAL')*/)) {
                                             return false;
@@ -381,7 +408,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Return ORM target entity resolver node
      */
-    private function getOrmTargetEntityResolverNode() : NodeDefinition
+    private function getOrmTargetEntityResolverNode(): NodeDefinition
     {
         $treeBuilder = new TreeBuilder('resolve_target_entities');
         $node        = $treeBuilder->getRootNode();
@@ -398,7 +425,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Return ORM entity listener node
      */
-    private function getOrmEntityListenersNode() : NodeDefinition
+    private function getOrmEntityListenersNode(): NodeDefinition
     {
         $treeBuilder = new TreeBuilder('entity_listeners');
         $node        = $treeBuilder->getRootNode();
@@ -482,7 +509,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Return ORM entity manager node
      */
-    private function getOrmEntityManagersNode() : ArrayNodeDefinition
+    private function getOrmEntityManagersNode(): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('entity_managers');
         $node        = $treeBuilder->getRootNode();
@@ -512,7 +539,7 @@ class Configuration implements ConfigurationInterface
                             ->append($this->getOrmCacheDriverNode('region_cache_driver'))
                             ->scalarNode('region_lock_lifetime')->defaultValue(60)->end()
                             ->booleanNode('log_enabled')->defaultValue($this->debug)->end()
-                            ->scalarNode('region_lifetime')->defaultValue(0)->end()
+                            ->scalarNode('region_lifetime')->defaultValue(3600)->end()
                             ->booleanNode('enabled')->defaultValue(true)->end()
                             ->scalarNode('factory')->end()
                         ->end()
@@ -642,7 +669,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Return a ORM cache driver node for an given entity manager
      */
-    private function getOrmCacheDriverNode(string $name) : ArrayNodeDefinition
+    private function getOrmCacheDriverNode(string $name): ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder($name);
         $node        = $treeBuilder->getRootNode();
@@ -651,7 +678,7 @@ class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->beforeNormalization()
                 ->ifString()
-                ->then(static function ($v) : array {
+                ->then(static function ($v): array {
                     return ['type' => $v];
                 })
             ->end()
@@ -666,8 +693,10 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Find proxy auto generate modes for their names and int values
+     *
+     * @return array{names: list<string>, values: list<int>}
      */
-    private function getAutoGenerateModes() : array
+    private function getAutoGenerateModes(): array
     {
         $constPrefix = 'AUTOGENERATE_';
         $prefixLen   = strlen($constPrefix);
@@ -698,15 +727,15 @@ class Configuration implements ConfigurationInterface
      * setDeprecation() with less than 3 args and the getDeprecation method was
      * introduced at the same time. By checking if getDeprecation() exists,
      * we can determine the correct param count to use when calling setDeprecated.
+     *
+     * @return list<string>|array{0:string, 1: numeric-string, string}
      */
-    private function getCommentedParamDeprecationMsg() : array
+    private function getDeprecationMsg(string $message, string $version): array
     {
-        $message = 'The doctrine-bundle type commenting features were removed; the corresponding config parameter was deprecated in 2.0 and will be dropped in 3.0.';
-
         if (method_exists(BaseNode::class, 'getDeprecation')) {
             return [
                 'doctrine/doctrine-bundle',
-                '2.0',
+                $version,
                 $message,
             ];
         }
