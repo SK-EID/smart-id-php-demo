@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2em;
+            }
+
+            body > ul > li {
+                font-family: Source Serif Pro, PT Sans, Trebuchet MS, Helvetica, Arial;
+                font-size: 2em;
+            }
+
+            h2 {
+                font-family: Tahoma, Helvetica, Arial;
+                font-size: 3em;
+            }
+
+            ul {
+                list-style: none;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="Sk\SmartId\Tests\Api\AuthenticationHashTest">Sk\SmartId\Tests\Api\AuthenticationHash</h2>
+        <ul>
+            <li style="color: #555753;">✓ Generated signableData withDefaultHashType sha512</li>
+            <li style="color: #555753;">✓ Generated signableData withDefaultHashType sha384</li>
+            <li style="color: #555753;">✓ Generated signableData withDefaultHashType sha256</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\AuthenticationRequestBuilderTest">Sk\SmartId\Tests\Api\AuthenticationRequestBuilder</h2>
+        <ul>
+            <li style="color: #555753;">✓ Authenticate with document number and generated signable data</li>
+            <li style="color: #555753;">✓ Authenticate with document number and generated hash</li>
+            <li style="color: #555753;">✓ Authenticate using national identity number and country code</li>
+            <li style="color: #555753;">✓ Authenticate using national identity</li>
+            <li style="color: #555753;">✓ AuthenticateWithoutCertificateLevel shouldPass</li>
+            <li style="color: #555753;">✓ AuthenticateWithoutDocumentNumberNorNationalIdentity shouldThrowException</li>
+            <li style="color: #555753;">✓ AuthenticateWithoutHash andWithoutData shouldThrowException</li>
+            <li style="color: #555753;">✓ AuthenticateWithoutRelyingPartyUuid shouldThrowException</li>
+            <li style="color: #555753;">✓ AuthenticateWithoutRelyingPartyName shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate withUserRefused shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate withResultMissingInResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate withSignatureMissingInResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate withCertificateMissingInResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate InteractionDisplayTextAndPIN withDisplayTextLongerThan60 InvalidParameterException</li>
+            <li style="color: #555753;">✓ Authenticate InteractionConfirmationMessage withDisplayTextLongerThan200 InvalidParameterException</li>
+            <li style="color: #555753;">✓ Authenticate InteractionDisplayTextAndPIN withDisplayTextExcactly60 noException</li>
+            <li style="color: #555753;">✓ Authenticate InteractionConfirmationMessage withDisplayTextExcactly200 noException</li>
+            <li style="color: #555753;">✓ Authenticate invalidSemanticsIdentifier InvalidParameterException</li>
+            <li style="color: #555753;">✓ Authenticate invalidSemanticsIdentifier2 InvalidParameterException</li>
+            <li style="color: #555753;">✓ Authenticate invalidSemanticsIdentifier noHyphen InvalidParameterException</li>
+            <li style="color: #555753;">✓ Authenticate validSemanticsIdentifier noException</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\AuthenticationResponseValidatorTest">Sk\SmartId\Tests\Api\AuthenticationResponseValidator</h2>
+        <ul>
+            <li style="color: #555753;">✓ Validation returns valid authentication result</li>
+            <li style="color: #555753;">✓ ValidationReturnsValidAuthenticationResult whenEndResultLowerCase</li>
+            <li style="color: #555753;">✓ ValidationReturnsInvalidAuthenticationResult whenEndResultNotOk</li>
+            <li style="color: #555753;">✓ ValidationReturnsInvalidAuthenticationResult whenSignatureVerificationFails</li>
+            <li style="color: #555753;">✓ ValidationReturnsInvalidAuthenticationResult whenSignersCertNotTrusted</li>
+            <li style="color: #555753;">✓ ValidationReturnsValidAuthenticationResult whenCertificateLevelHigherThanRequested</li>
+            <li style="color: #555753;">✓ ValidationReturnsInvalidAuthenticationResult whenCertificateLevelLowerThanRequested</li>
+            <li style="color: #555753;">✓ WithEmptyRequestedCertificateLevel shouldPass</li>
+            <li style="color: #555753;">✓ WithNullRequestedCertificateLevel shouldPass</li>
+            <li style="color: #555753;">✓ WhenCertificateIsNull ThenThrowException</li>
+            <li style="color: #555753;">✓ WhenSignatureIsEmpty ThenThrowException</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\CertificateLevelTest">Sk\SmartId\Tests\Api\CertificateLevel</h2>
+        <ul>
+            <li style="color: #555753;">✓ Both certificate levels qualified</li>
+            <li style="color: #555753;">✓ Both certificate levels advanced</li>
+            <li style="color: #555753;">✓ First certificate level higher</li>
+            <li style="color: #555753;">✓ First certificate level lower</li>
+            <li style="color: #555753;">✓ First cert level unknown</li>
+            <li style="color: #555753;">✓ Second cert level unknown</li>
+            <li style="color: #555753;">✓ Both cert level unknown</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\NetworkInterfaceTest">Sk\SmartId\Tests\Api\NetworkInterface</h2>
+        <ul>
+            <li style="color: #555753;">✓ CreateAuthenticationSessionRequest withNetworkInterface assertInterfaceInRequest</li>
+            <li style="color: #555753;">✓ AuthenticationRequestBuilder withNetworkInterface assertInterfaceInSessionStatusFetcher</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\SessionStatusFetcherBuilderTest">Sk\SmartId\Tests\Api\SessionStatusFetcherBuilder</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get authentication response</li>
+            <li style="color: #555753;">✓ GetAuthenticationResponse withNetworkInterfaceInPlace</li>
+            <li style="color: #555753;">✓ Get session status</li>
+            <li style="color: #555753;">✓ GetSessionStatus withNetworkInterfaceInPlace</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\SignableDataTest">Sk\SmartId\Tests\Api\SignableData</h2>
+        <ul>
+            <li style="color: #555753;">✓ SignableData withDefaultHashType sha512</li>
+            <li style="color: #555753;">✓ SignableData with sha256</li>
+            <li style="color: #555753;">✓ SignableData with sha384</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\SmartIdAuthenticationResultTest">Sk\SmartId\Tests\Api\SmartIdAuthenticationResult</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get signature value in base 64</li>
+            <li style="color: #555753;">✓ Get signature value in bytes</li>
+            <li style="color: #555753;">✓ Incorrect base 64 string should throw exception</li>
+            <li style="color: #555753;">✓ Get certificate</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\VerificationCodeCalculatorTest">Sk\SmartId\Tests\Api\VerificationCodeCalculator</h2>
+        <ul>
+            <li style="color: #555753;">✓ Calculate correct verification code</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\ClientTest">Sk\SmartId\Tests\Client</h2>
+        <ul>
+            <li style="color: #555753;">✓ Api</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Rest\SessionStatusPollerTest">Sk\SmartId\Tests\Rest\SessionStatusPoller</h2>
+        <ul>
+            <li style="color: #555753;">✓ Get first complete response</li>
+            <li style="color: #555753;">✓ Poll and get third complete response</li>
+            <li style="color: #555753;">✓ Set polling sleep time</li>
+            <li style="color: #555753;">✓ Set response socket timeout</li>
+            <li style="color: #555753;">✓ Response socket open time should not be set by default</li>
+            <li style="color: #555753;">✓ GetUserRefusedResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserTimeoutResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetDocumentUnusableResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetRequiredInteractionNotSupportedByAppResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserRefusedDisplayTextAndPinResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserRefusedVcChoiceResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserRefusedConfirmationMessageResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserRefusedConfirmationMessageWithVcChoiceResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUserRefusedCertChoiceResponse shouldThrowException</li>
+            <li style="color: #555753;">✓ GetUnknownEndResult shouldThrowException</li>
+            <li style="color: #555753;">✓ GetMissingEndResult shouldThrowException</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\SslTest">Sk\SmartId\Tests\Ssl</h2>
+        <ul>
+            <li style="color: #555753;">✓ Authenticate demoEnvUseLiveEnvPublicKeys shouldThrowException</li>
+            <li style="color: #555753;">✓ Authenticate demoEnvSetPublicKeysFromEmptyArray httpsPinningNotUsed exceptionNotThrown</li>
+            <li style="color: #555753;">✓ MakeRequestToGoogle defaultPublicKeys shouldThrowException</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Api\SmartIdClientIntegrationTest">Sk\SmartId\Tests\Api\SmartIdClientIntegration</h2>
+        <ul>
+            <li style="color: #ef2929;">❌ Authenticate withDocumentNumber</li>
+            <li style="color: #ef2929;">❌ Authenticate successfulAuthentication interactionFlowUsedIncludedInTheResponse</li>
+            <li style="color: #ef2929;">❌ Authenticate withSemanticsIdentifier</li>
+            <li style="color: #ef2929;">❌ StartAuthenticationAndReturnSessionId withSemanticsIdentifier</li>
+            <li style="color: #ef2929;">❌ GetAuthenticationResponse withSessionId isRunning</li>
+            <li style="color: #ef2929;">❌ GetAuthenticationResponse withSessionId isComplete</li>
+            <li style="color: #ef2929;">❌ Authenticate withNetworkInterfaceInPlace</li>
+            <li style="color: #ef2929;">❌ GetAuthenticationResponse withNetworkInterfaceInPlaceAndSessionId isRunning</li>
+        </ul>
+        <h2 id="Sk\SmartId\Tests\Rest\SmartIdRestIntegrationTest">Sk\SmartId\Tests\Rest\SmartIdRestIntegration</h2>
+        <ul>
+            <li style="color: #555753;">✓ Authenticate</li>
+        </ul>
+    </body>
+</html>
