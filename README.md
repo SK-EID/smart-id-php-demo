@@ -1,28 +1,76 @@
-Smart-ID Relying Party PHP Api Demo
-------------------
+**Smart-ID php demo application**
 
-This application illustrates how to implement logging in with Smart-ID on a PHP based app.
+This application demonstrates how to use the smart-id-php-client in a symfony application to authenticate and authorize users.
 
-**This PHP Demo cannot be used to create digitally signed containers because PHP does not have a library like DigiDoc4J.**
+## Building and running with Docker
 
-Setup
-------------
-Demo has an easy [Docker](https://www.docker.com/what-docker) setup.
+### Requirements
+
+You must have Docker installed in order to use the application
+
+### Building the image
+
+This step needs to be run only on the initial build of the application
+
+First build the docker image, by issuing the next command in the application folder
+
+`docker build -t smart-id-php-demo:1.0 ./`
+
+### Running the Docker Image
+
+For running the previously built image issue the following command
+
+`docker run -p 8001:8000 --env-file docker.env -it smart-id-php-demo:1.0`
+
+The application should start up in about 30 seconds
+
+### Accessing the application
+
+For accessing the application go to the following url in your browser
+
+[http://localhost:8001/login](http://localhost:8001/login)
+
+Now you can try to log in to the application
+
+## Running the application without Docker
+
+### Requirements
+
+- php >= 7.3, including curl, mysql, dom extensions
+- [symfony cli tool](https://symfony.com/download)
+- mysql server installed
+
+    (or run it from Docker: `docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql:latest`)
+
+### Database migration
+- create database mid_rest_demo
+    - `CREATE DATABASE smart_id_demo;`
+- create user mid_rest_demo, with password mid_rest_demo
+    - `CREATE USER 'smart_id_demo' IDENTIFIED WITH mysql_native_password BY 'smart_id_demo';`
+- grant the new user all privileges on the database
+    - `GRANT ALL PRIVILEGES ON smart_id_demo.* TO 'smart_id_demo';`
+- Run migration script
+
+    `php bin/console --no-interaction doctrine:migrations:migrate`
+
+### Configuring the application
+
+- You might need to change the server name in DATABASE_URL constant in the .env file to match your sql server host
+
+### Running the application
+Start Symfony in the project folder.
+Depending on how you installed it there can be different options for it.
+
+If you have Symfony installed locally into your home directory then run it from there:
+
+`~/.symfony/bin/symfony serve`
+
+Or if you have installed it globally (or added it into your path) you can run it like this:
+
+`symfony serve` 
 
 
-1. Install Docker
-2. Clone the whole repo to a local directory
-4. Open command-line in that directory and run following command:
-  
-   `docker-compose up --build`
+### Accessing the application
 
-Once the script completes the install (takes several minutes) you should have demo application available at [http://localhost:32080](http://localhost:32080).
-Keep the browser's Developer's console Network tab open to the requests arriving from back-end.
-If you change app files then hit CTRL+SHIFT+F5 (CMD+SHIFT+F5 for MAC) to reload changes in browser (no need to restart/rebuild container).
-
-You can now log in with test accounts listed in 
-[smart-id-documentation wiki](https://github.com/SK-EID/smart-id-documentation/wiki/Environment-technical-parameters#accounts).
-Keep in mind that the demo application is configured to allow only to log in users who have QUALIFIED certificate level.
-To also allow users with ADVANCED (which is weaker than QUALIFIED) certificate level one needs to update backend/app/app.php and set  `'certificate_level'  => 'ADVANCED'`.
-
-
+Access the application from [localhost:8000](http://localhost:8000)
+Now you can try to log in to the application using test numbers.

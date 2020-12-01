@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="img-thumbnail" style="background-color: #313131;
+            background-size: unset; width: 100%; height: 100vh;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mx-auto">
+                <div id="first">
+                    <div class="myform form ">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Login</h1>
+                            </div>
+                        </div>
+                        <form action="{{ path('start_login') }}" method="post" id="loginForm">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Country</label>
+                                <select class="form-control" name="country" form="loginForm">
+                                    <option {% if country == "EE" %} selected {% endif %} value="EE">Estonia</option>
+                                    <option {% if country == "LV" %} selected {% endif %} value="LV">Latvia</option>
+                                    <option {% if country == "LT" %} selected {% endif %} value="LT">Lithuania</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">National identity code</label>
+                                {% if personal_id %}
+                                    <input class="form-control" type="text" name="personal-id" value="{{ personal_id }}" disabled>
+                                {% else %}
+                                    <input class="form-control" type="text" name="personal-id">
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-12 text-center ">
+                                <input type="submit" value="Sign in with Smart-ID" class="btn btn-success">
+                            </div>
+
+                            {% if verification_code %}
+                                <div class="col-md-12 text-center">
+                                    <h3 style="display: inline">Your control code: </h3>
+                                    <h2 style="display: inline">{{ verification_code }}</h2>
+                                </div>
+                            {% endif %}
+
+                            {% if login_error %}
+                                <div class="col-md-12 text-center">
+                                    <p class="error">{{ login_error }}</p>
+                                </div>
+                            {% endif %}
+                            {% if errors %}
+                                {% for e in errors %}
+                                    <div class="col-md-12 text-center">
+                                        <p class="error">{{ login_error }}</p>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if verification_code %}
+    <script>
+        fetch("/login", {
+            method: "POST"
+        }).then(r => window.location="/blog")
+    </script>
+    {% endif %}
+</div>
+{% endblock %}
